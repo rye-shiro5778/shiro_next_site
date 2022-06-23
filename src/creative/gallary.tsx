@@ -1,6 +1,6 @@
-import Circle from "creative/p5/Circle";
-import Timer1 from "creative/p5/Timer1";
-import { GallraryList } from "utils/types/gallary";
+import Circle from "@/creative/p5/RandomCircle1";
+import Timer1 from "@/creative/p5/Timer1";
+import { GallraryList } from "@/utils/types/gallary";
 
 export const gallraryList: GallraryList = {
   randomcircle1: {

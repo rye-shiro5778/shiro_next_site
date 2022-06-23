@@ -1,4 +1,4 @@
-import { Navbar } from "components/templates/Header";
+import { Navbar } from "@/components/templates/Header";
 import { Footer } from "../Footer";
 
 type Props = {
