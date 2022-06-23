@@ -1,5 +1,5 @@
-import type { NextPage, NextPageWithLayout } from "next";
-import Layout from "components/templates/Layouts/default";
+import Layout from "@/components/templates/Layouts";
+import type { NextPageWithLayout } from "next";
 
 const About: NextPageWithLayout = () => {
   return <div className="container mx-auto">About</div>;

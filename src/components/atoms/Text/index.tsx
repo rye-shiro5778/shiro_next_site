@@ -3,6 +3,10 @@ import { Props } from "./type";
 
 export const Text: React.VFC<Props> = (props) => {
   const { type, children, className, size = "m" } = props;
+  if (!type) {
+    return <span className={"text-white " + className}>{children}</span>;
+  }
+
   if (type === "link") {
     const { className, href, size, type, ...linkProps } = props;
     const isHttp = /http?s:\/\//.test(href);
@@ -20,7 +24,12 @@ export const Text: React.VFC<Props> = (props) => {
       </Link>
     );
   } else if (type === "text") {
-    return <span className={"text-white " + className}>{children}</span>;
+    const { className, size, type, ...pProps } = props;
+    return (
+      <p {...pProps} className={"text-white " + className}>
+        {children}
+      </p>
+    );
   } else {
     return <></>;
   }

@@ -14,22 +14,13 @@ type Size = {
 };
 
 type Type =
-  | ({
-      type: "link";
+  | {
       className?: string;
       onMouseEnter?: React.MouseEventHandler<Element> | undefined;
       onClick?: React.MouseEventHandler;
       href: string;
       ref?: any;
-    } & JSX.IntrinsicElements["a"])
-  | ({
-      type: "text";
-      className?: string;
-    } & JSX.IntrinsicElements["p"])
-  | ({
-      type?: undefined;
-      className?: string;
-    } & JSX.IntrinsicElements["span"]);
+    } & JSX.IntrinsicElements["a"];
 
 export type Props = Type &
   Size & {

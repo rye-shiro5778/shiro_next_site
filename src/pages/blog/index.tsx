@@ -1,4 +1,4 @@
-import Layout from "components/templates/Layouts/default";
+import Layout from "@/components/templates/Layouts";
 import type { NextPageWithLayout } from "next";
 
 const Blog: NextPageWithLayout = () => {

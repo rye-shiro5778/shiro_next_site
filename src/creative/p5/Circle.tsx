@@ -1,3 +1,5 @@
+import { p5CanvasSize } from "@/utils/p5CanvasSize";
+import { CanvasSize } from "@/utils/types/canvasSize";
 import dynamic from "next/dynamic";
 import p5Types from "p5";
 
@@ -6,39 +8,40 @@ const Sketch = dynamic(import("react-p5"), {
   ssr: false,
 });
 
-const Circle: React.VFC = () => {
+type Props = CanvasSize;
+
+const Circle: React.VFC<Props> = ({ cWidth, cHeight }) => {
   const preload = (p5: p5Types) => {};
 
   const setup = (p5: p5Types, canvasParentRef: Element) => {
-    p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
-
-    // p5.text("Dive", p5.windowWidth / 2, p5.windowHeight / 2);
+    const { width, height } = p5CanvasSize({ p5, cWidth, cHeight });
+    p5.createCanvas(width, height).parent(canvasParentRef);
     p5.textAlign("center");
-    p5.background(p5.color(30, 41, 59));
+    // p5.background(p5.color(30, 41, 59));
+    p5.background(0);
     p5.noFill();
   };
 
   const draw = (p5: p5Types) => {
+    const { width, height } = p5CanvasSize({ p5, cWidth, cHeight });
     p5.frameRate(15);
     p5.colorMode(p5.HSB);
     p5.stroke(
       p5.color(p5.random(20, 60), p5.random(50, 60), p5.random(50, 60))
     );
-    p5.ellipse(
-      p5.random(p5.windowWidth),
-      p5.windowHeight / 2,
-      p5.random(320),
-      p5.random(420)
-    );
-    if (p5.frameCount > 140) {
+    p5.ellipse(p5.random(width), height / 2, p5.random(320), p5.random(420));
+    if (p5.frameCount > 100) {
       p5.clear();
+      p5.background(0);
       p5.frameCount = 0;
       p5.frameRate(25);
     }
   };
 
   const windowResized = (p5: p5Types) => {
-    p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+    const { width, height } = p5CanvasSize({ p5, cWidth, cHeight });
+    p5.background(1);
+    p5.resizeCanvas(width, height);
     p5.frameCount = 0;
     p5.loop();
   };

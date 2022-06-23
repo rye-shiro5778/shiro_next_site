@@ -1,4 +1,4 @@
-import { gallraryList } from "./constants/gallary";
+import { gallraryList } from "../creative/gallary";
 import { Gallary } from "./types/gallary";
 
 type Props = {
@@ -16,9 +16,15 @@ export function getGallraryList({ sort, limit }: Props) {
   });
 
   const sortKey = sort?.key ?? "postedDate";
+  const sortOrder = sort?.order ?? "asc";
+  if (sortKey === "ogp" || sortKey === "tags") {
+    return gallrary;
+  }
+
   gallrary.sort((before, next) => {
-    if (before[sortKey] > next[sortKey]) return -1;
-    if (before[sortKey] < next[sortKey]) return 1;
+    const order = sortOrder === "asc" ? 1 : -1;
+    if (before[sortKey] > next[sortKey]) return -1 * order;
+    if (before[sortKey] < next[sortKey]) return 1 * order;
     return 0;
   });
 

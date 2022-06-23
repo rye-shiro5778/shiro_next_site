@@ -1,22 +1,16 @@
-import type {
-  GetServerSideProps,
-  GetStaticPaths,
-  GetStaticProps,
-  NextPage,
-  NextPageWithLayout,
-} from "next";
 import { Text } from "components/atoms/Text";
-import Layout from "components/templates/Layouts/overlay";
-import { gallraryList } from "utils/constants/gallary";
+import Layout from "components/templates/Layouts";
+import { gallraryList } from "creative/gallary";
+import type { GetStaticPaths, GetStaticProps, NextPageWithLayout } from "next";
 
 type Props = { id: string };
 
 const Page: NextPageWithLayout<Props> = ({ id }) => {
-  const { Sketch, title } = gallraryList[id];
+  const { sketch, title } = gallraryList[id];
   return (
     <>
       <div className={`h-[100vh] w-[100%] relative`}>
-        <div>{Sketch}</div>
+        <div>{sketch}</div>
         <div className={`absolute  bottom-8  w-[100%] z-[100] mt-2 `}>
           <div className="container mx-auto">
             <Text type="text">{title}</Text>
@@ -44,5 +38,5 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   };
 };
 
-Page.getLayout = (page) => <Layout>{page}</Layout>;
+Page.getLayout = (page) => <Layout isStack={true}>{page}</Layout>;
 export default Page;

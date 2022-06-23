@@ -1,10 +1,13 @@
 export type Gallary = {
   id: string;
   title: string;
-  Sketch: JSX.Element;
+  sketch: JSX.Element;
+  card: JSX.Element;
+  ogp?: ImageData;
   description: string;
   postedDate: string;
   updatedDate: string;
+  tags?: string[];
 };
 
 export type GallraryList = {
