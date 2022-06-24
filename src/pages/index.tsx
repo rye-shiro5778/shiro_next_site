@@ -1,5 +1,5 @@
+import FlakesFall from "@/art/p5/FlaksFall";
 import Layout from "@/components/templates/Layouts";
-import FlakesFall from "@/creative/p5/FlaksFall";
 import type { NextPageWithLayout } from "next";
 import Head from "next/head";
 

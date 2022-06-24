@@ -1,5 +1,5 @@
-import RandomCircle from "@/creative/p5/RandomCircle";
-import Timer1 from "@/creative/p5/Timer1";
+import RandomCircle from "@/art/p5/RandomCircle";
+import Timer1 from "@/art/p5/Timer1";
 import { GallraryList } from "@/utils/types/gallary";
 import FlakesFall from "./p5/FlaksFall";
 

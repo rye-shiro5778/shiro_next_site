@@ -1,6 +1,6 @@
+import { gallraryList } from "@/art/gallary";
 import { Text } from "@/components/atoms/Text";
 import Layout from "@/components/templates/Layouts";
-import { gallraryList } from "@/creative/gallary";
 import type { GetStaticPaths, GetStaticProps, NextPageWithLayout } from "next";
 
 type Props = { id: string };

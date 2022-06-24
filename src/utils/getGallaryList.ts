@@ -1,4 +1,4 @@
-import { gallraryList } from "@/creative/gallary";
+import { gallraryList } from "@/art/gallary";
 import { Gallary } from "@/utils/types/gallary";
 
 type Props = {
