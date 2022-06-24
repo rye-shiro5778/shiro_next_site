@@ -7,7 +7,7 @@ export type Gallary = {
   description: string;
   postedDate: string;
   updatedDate: string;
-  tags?: string[];
+  tags?: [string] | [string, string] | [string, string, string];
 };
 
 export type GallraryList = {

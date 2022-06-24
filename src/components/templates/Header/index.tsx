@@ -22,7 +22,7 @@ export const Navbar: React.VFC = () => {
               White
             </Link>
             <div className="flex lg:hidden">
-              <Button type="button" aria-label="toggle menu" onClick={onClick}>
+              <Button aria-label="toggle menu" btnType="text" onClick={onClick}>
                 <FaHamburger />
               </Button>
             </div>

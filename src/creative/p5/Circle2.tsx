@@ -1,4 +1,3 @@
-import { randomUUID } from "crypto";
 import dynamic from "next/dynamic";
 import p5Types from "p5";
 
@@ -50,6 +49,7 @@ export const Circle2: React.VFC = () => {
   const mouseClicked = (_p5: p5Types) => {
     reset(_p5);
   };
+
   return (
     <Sketch
       preload={preload}

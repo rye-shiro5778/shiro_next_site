@@ -1,4 +1,5 @@
 import Layout from "@/components/templates/Layouts";
+import FlakesFall from "@/creative/p5/FlaksFall";
 import type { NextPageWithLayout } from "next";
 import Head from "next/head";
 
@@ -11,7 +12,11 @@ const Home: NextPageWithLayout = () => {
       </Head>
 
       <main>
-        <div className="">aaa</div>
+        <div className={`h-[100vh] w-[100%] relative`}>
+          <div>
+            <FlakesFall cWidth="windowWidth" cHeight="windowHeight" />
+          </div>
+        </div>
       </main>
     </>
   );

@@ -1,5 +1,5 @@
-import { gallraryList } from "../creative/gallary";
-import { Gallary } from "./types/gallary";
+import { gallraryList } from "@/creative/gallary";
+import { Gallary } from "@/utils/types/gallary";
 
 type Props = {
   sort?: {

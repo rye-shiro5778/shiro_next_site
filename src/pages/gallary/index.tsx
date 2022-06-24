@@ -1,8 +1,8 @@
-import { Text } from "components/atoms/Text";
-import Layout from "components/templates/Layouts";
+import { Text } from "@/components/atoms/Text";
+import Layout from "@/components/templates/Layouts";
+import { getGallraryList } from "@/utils/getGallaryList";
 import type { NextPageWithLayout } from "next";
 import { useMemo } from "react";
-import { getGallraryList } from "utils/getGallaryList";
 
 type Props = {};
 
@@ -24,28 +24,26 @@ const Page: NextPageWithLayout<Props> = ({}) => {
               <>
                 <div className="w-full">{card}</div>
                 <div className="mx-6 my-2">
-                  <div className="font-bold text-xl mb-2">
-                    <Text type="text" className={"text-gray-400"}>
-                      {title}
-                    </Text>
+                  <div className="font-bold text-xl">
+                    <p className={"text-black"}>{title}</p>
                   </div>
-                  <Text type={"text"} className={"text-gray-400"}>
-                    {postedDate}
-                  </Text>
+                  <div className="flex justify-between py-2">
+                    <p className={"text-gray-600"}>{postedDate}</p>
+                    <div className="pl-6 ">
+                      {tags &&
+                        tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="inline-block bg-gray-200 rounded-full px-3 text-sm font-semibold text-gray-700 mr-2 "
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                    </div>
+                  </div>
                 </div>
               </>
             </Text>
-            <div className="px-6 pt-1 pb-2">
-              {tags &&
-                tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-                  >
-                    {tag}
-                  </span>
-                ))}
-            </div>
           </div>
         );
       })}
