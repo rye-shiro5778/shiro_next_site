@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint  --fix",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "cross-env STORYBOOK=TRUE start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
@@ -39,6 +39,7 @@
     "@typescript-eslint/parser": "^5.29.0",
     "autoprefixer": "^10.4.7",
     "babel-loader": "^8.2.5",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.4",
