@@ -1,21 +1,47 @@
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
-import { FaFacebook } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import { Button } from "./index";
 
 export default {
-  title: "Example/Button",
+  title: "Atoms/Button",
   component: Button,
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Default = Template.bind({});
+Default.args = {
   children: "Button",
 };
 
 export const WithIcon = Template.bind({});
 WithIcon.args = {
   children: "Button",
-  icon: <FaFacebook />,
+  icon: <FaGithub />,
+};
+
+export const Primary = Template.bind({});
+Primary.args = {
+  children: "Button",
+  btnType: "primary",
+};
+
+export const Dashed = Template.bind({});
+Dashed.args = {
+  children: "Button",
+  btnType: "dashed",
+};
+
+export const Link = Template.bind({});
+Link.args = {
+  children: "Button",
+  btnType: "link",
+  href: "https://github.com",
+  target: "_blank",
+};
+
+export const IconOnly = Template.bind({});
+IconOnly.args = {
+  children: <FaGithub />,
+  btnType: "text",
 };
