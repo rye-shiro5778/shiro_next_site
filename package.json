@@ -7,7 +7,7 @@
     "start": "next start",
     "lint": "next lint  --fix",
     "storybook": "cross-env STORYBOOK=TRUE start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -o ../my-storybook/storybook-static"
   },
   "dependencies": {
     "express": "^4.17.2",
