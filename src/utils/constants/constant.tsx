@@ -42,7 +42,7 @@ export const links: {
   },
   {
     label: "StoryBook",
-    href: "https://github.com/rye-shiro5778/",
+    href: "https://rye-shiro5778.github.io/shiro_next_site_storybook/",
     icon: <SiStorybook />,
   },
 ];
