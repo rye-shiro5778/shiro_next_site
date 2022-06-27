@@ -1,4 +1,4 @@
-import { Text } from "@/components/atoms/Text";
+import { Text } from "@/components/atoms/Typography";
 import Layout from "@/components/templates/Layouts";
 import type { NextPageWithLayout } from "next";
 
