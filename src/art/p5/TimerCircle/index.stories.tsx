@@ -1,22 +1,19 @@
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
-import Circle from ".";
+import { TimerCircle1 } from ".";
 
 export default {
-  title: "p5/TimerCircle",
-  component: Circle,
-} as ComponentMeta<typeof Circle>;
+  title: "p5/TimerTimerCircle1",
+  component: TimerCircle1,
+} as ComponentMeta<typeof TimerCircle1>;
 
-const Template: ComponentStory<typeof Circle> = (args) => <Circle {...args} />;
+const Template: ComponentStory<typeof TimerCircle1> = (args) => (
+  <TimerCircle1 {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
   cHeight: 300,
   cWidth: 400,
-  colorNum: undefined,
-  arms: undefined,
-  nodes: undefined,
-  armLen: undefined,
-  speed: undefined,
 };
 
 export const Arrange = Template.bind({});

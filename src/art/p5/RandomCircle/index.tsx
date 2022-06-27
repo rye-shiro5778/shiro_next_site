@@ -10,15 +10,14 @@ const Sketch = dynamic(import("react-p5"), {
 
 type Props = CanvasSize;
 
-const Circle: React.VFC<Props> = ({ cWidth, cHeight }) => {
+export const Circle: React.VFC<Props> = ({ cWidth, cHeight }) => {
   const preload = (p5: p5Types) => {};
 
   const setup = (p5: p5Types, canvasParentRef: Element) => {
     const { width, height } = p5CanvasSize({ p5, cWidth, cHeight });
     p5.createCanvas(width, height).parent(canvasParentRef);
     p5.textAlign("center");
-    // p5.background(p5.color(30, 41, 59));
-    p5.background(0);
+    p5.background(p5.color("#1e293b"));
     p5.noFill();
   };
 
@@ -32,7 +31,7 @@ const Circle: React.VFC<Props> = ({ cWidth, cHeight }) => {
     p5.ellipse(p5.random(width), height / 2, p5.random(320), p5.random(420));
     if (p5.frameCount > 100) {
       p5.clear();
-      p5.background(0);
+      p5.background(p5.color("#1e293b"));
       p5.frameCount = 0;
       p5.frameRate(25);
     }
@@ -40,7 +39,7 @@ const Circle: React.VFC<Props> = ({ cWidth, cHeight }) => {
 
   const windowResized = (p5: p5Types) => {
     const { width, height } = p5CanvasSize({ p5, cWidth, cHeight });
-    p5.background(1);
+    p5.background(p5.color("#1e293b"));
     p5.resizeCanvas(width, height);
     p5.frameCount = 0;
     p5.loop();
@@ -66,5 +65,3 @@ const Circle: React.VFC<Props> = ({ cWidth, cHeight }) => {
     />
   );
 };
-
-export default Circle;

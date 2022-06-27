@@ -16,7 +16,7 @@ type Props = CanvasSize & {
   colorNum?: number;
 };
 
-const TimerCircle1: React.VFC<Props> = ({
+export const TimerCircle1: React.VFC<Props> = ({
   cWidth,
   cHeight,
   arms = 2,
@@ -37,6 +37,7 @@ const TimerCircle1: React.VFC<Props> = ({
     p5.noFill();
     p5.stroke(colorNum);
     p5.strokeWeight(2);
+    p5.background(p5.color("#1e293b"));
 
     stopNum = 1;
   };
@@ -44,7 +45,7 @@ const TimerCircle1: React.VFC<Props> = ({
   const draw = (p5: p5Types) => {
     const { width, height } = p5CanvasSize({ p5, cWidth, cHeight });
     const time = p5.frameCount * speed;
-    p5.background(10);
+    p5.background(p5.color("#1e293b"));
     p5.translate(width * 0.5, height * 0.5);
     for (let node = 0; node < nodes; node++) {
       let nRatio = p5.map(node, 0, nodes, 0.0, 1.0);
@@ -73,6 +74,7 @@ const TimerCircle1: React.VFC<Props> = ({
   const windowResized = (p5: p5Types) => {
     const { width, height } = p5CanvasSize({ p5, cWidth, cHeight });
     p5.resizeCanvas(width, height);
+    p5.background(p5.color("#1e293b"));
     p5.frameCount = 0;
     p5.loop();
   };
@@ -87,5 +89,3 @@ const TimerCircle1: React.VFC<Props> = ({
     />
   );
 };
-
-export default TimerCircle1;

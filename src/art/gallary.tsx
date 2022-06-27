@@ -1,14 +1,16 @@
-import RandomCircle from "@/art/p5/RandomCircle";
-import Timer1 from "@/art/p5/Timer1";
+import { Circle } from "@/art/p5/RandomCircle";
 import { GallraryList } from "@/utils/types/gallary";
-import FlakesFall from "./p5/FlaksFall";
+import { Rain } from "./p5/FlaksFall/Rain";
+import { SnowFall } from "./p5/FlaksFall/SnowFall";
+import { RandomBrush } from "./p5/RandomWalk/RandomBrush";
+import { TimerCircle1 } from "./p5/TimerCircle";
 
 export const gallraryList: GallraryList = {
   randomcircle1: {
     id: "randomcircle1",
     title: "Random Circle",
-    sketch: <RandomCircle cWidth={"windowWidth"} cHeight={"windowHeight"} />,
-    card: <RandomCircle cWidth={400} cHeight={250} />,
+    sketch: <Circle cWidth={"windowWidth"} cHeight={"windowHeight"} />,
+    card: <Circle cWidth={400} cHeight={250} />,
     description: "",
     postedDate: "2022-0521",
     updatedDate: "2022-0521",
@@ -19,8 +21,8 @@ export const gallraryList: GallraryList = {
     id: "timercircle1",
     title: "Timer Circle",
     description: "円と時間",
-    sketch: <Timer1 cWidth={"windowWidth"} cHeight={"windowHeight"} />,
-    card: <Timer1 cWidth={400} cHeight={250} />,
+    sketch: <TimerCircle1 cWidth={"windowWidth"} cHeight={"windowHeight"} />,
+    card: <TimerCircle1 cWidth={400} cHeight={250} />,
     postedDate: "2022-0522",
     updatedDate: "2022-0522",
     ogp: undefined,
@@ -30,10 +32,105 @@ export const gallraryList: GallraryList = {
     id: "snowflakes1",
     title: "SnowFall",
     description: "雨が降る",
-    sketch: <FlakesFall cWidth={"windowWidth"} cHeight={"windowHeight"} />,
-    card: <FlakesFall cWidth={400} cHeight={250} />,
+    sketch: <SnowFall cWidth={"windowWidth"} cHeight={"windowHeight"} />,
+    card: <SnowFall cWidth={400} cHeight={250} />,
     postedDate: "2022-0622",
     updatedDate: "2022-0622",
+    ogp: undefined,
+    tags: ["p5js", "TypeScript"],
+  },
+  rain1: {
+    id: "rain1",
+    title: "Ame",
+    description: "雨が降る",
+    sketch: <Rain cWidth={"windowWidth"} cHeight={"windowHeight"} />,
+    card: <Rain cWidth={400} cHeight={250} />,
+    postedDate: "2022-0624",
+    updatedDate: "2022-0624",
+    ogp: undefined,
+    tags: ["p5js", "TypeScript"],
+  },
+  randombrush1: {
+    id: "randombrush1",
+    title: "Brsuh",
+    description: "雨が降る",
+    sketch: (
+      <RandomBrush cWidth={"windowWidth"} cHeight={"windowHeight"} num={200} />
+    ),
+    card: (
+      <RandomBrush
+        cWidth={400}
+        cHeight={250}
+        drawSpeed={10}
+        maxFrameCount={350}
+      />
+    ),
+    postedDate: "2022-0625",
+    updatedDate: "2022-0625",
+    ogp: undefined,
+    tags: ["p5js", "TypeScript"],
+  },
+  randomcircle12: {
+    id: "randomcircle12",
+    title: "Random Circle",
+    sketch: <Circle cWidth={"windowWidth"} cHeight={"windowHeight"} />,
+    card: <Circle cWidth={400} cHeight={250} />,
+    description: "",
+    postedDate: "2022-0521",
+    updatedDate: "2022-0521",
+    ogp: undefined,
+    tags: ["p5js"],
+  },
+  timercircle12: {
+    id: "timercircle12",
+    title: "Timer Circle",
+    description: "円と時間",
+    sketch: <TimerCircle1 cWidth={"windowWidth"} cHeight={"windowHeight"} />,
+    card: <TimerCircle1 cWidth={400} cHeight={250} />,
+    postedDate: "2022-0522",
+    updatedDate: "2022-0522",
+    ogp: undefined,
+    tags: ["p5js"],
+  },
+  snowflakes12: {
+    id: "snowflakes12",
+    title: "SnowFall",
+    description: "雨が降る",
+    sketch: <SnowFall cWidth={"windowWidth"} cHeight={"windowHeight"} />,
+    card: <SnowFall cWidth={400} cHeight={250} />,
+    postedDate: "2022-0622",
+    updatedDate: "2022-0622",
+    ogp: undefined,
+    tags: ["p5js", "TypeScript"],
+  },
+  rain12: {
+    id: "rain12",
+    title: "Ame",
+    description: "雨が降る",
+    sketch: <Rain cWidth={"windowWidth"} cHeight={"windowHeight"} />,
+    card: <Rain cWidth={400} cHeight={250} />,
+    postedDate: "2022-0624",
+    updatedDate: "2022-0624",
+    ogp: undefined,
+    tags: ["p5js", "TypeScript"],
+  },
+  randombrush2: {
+    id: "randombrush2",
+    title: "Brsuh",
+    description: "雨が降る",
+    sketch: (
+      <RandomBrush cWidth={"windowWidth"} cHeight={"windowHeight"} num={200} />
+    ),
+    card: (
+      <RandomBrush
+        cWidth={400}
+        cHeight={250}
+        drawSpeed={10}
+        maxFrameCount={350}
+      />
+    ),
+    postedDate: "2022-0625",
+    updatedDate: "2022-0625",
     ogp: undefined,
     tags: ["p5js", "TypeScript"],
   },

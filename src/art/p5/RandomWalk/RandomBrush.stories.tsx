@@ -1,12 +1,14 @@
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
-import { Circle } from ".";
+import { RandomBrush } from "./RandomBrush";
 
 export default {
-  title: "p5/Circle",
-  component: Circle,
-} as ComponentMeta<typeof Circle>;
+  title: "p5/RandomWalk/Brush",
+  component: RandomBrush,
+} as ComponentMeta<typeof RandomBrush>;
 
-const Template: ComponentStory<typeof Circle> = (args) => <Circle {...args} />;
+const Template: ComponentStory<typeof RandomBrush> = (args) => (
+  <RandomBrush {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
@@ -18,4 +20,7 @@ export const Full = Template.bind({});
 Full.args = {
   cHeight: "windowHeight",
   cWidth: "windowWidth",
+  drawSpeed: 50,
+  num: 200,
+  maxFrameCount: 350,
 };
