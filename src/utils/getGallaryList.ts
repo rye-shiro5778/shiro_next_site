@@ -7,9 +7,10 @@ type Props = {
     order: "desc" | "asc";
   };
   limit?: number;
+  offset?: number;
 };
 
-export function getGallraryList({ sort, limit }: Props) {
+export function getGallraryList({ sort, limit, offset = 0 }: Props) {
   const _gallaruList = { ...gallraryList };
   const gallrary = Object.keys(_gallaruList).map((id) => {
     return gallraryList[id];
@@ -28,9 +29,6 @@ export function getGallraryList({ sort, limit }: Props) {
     return 0;
   });
 
-  if (limit) {
-    return gallrary.slice(0, limit);
-  }
-
-  return gallrary;
+  const length = gallrary.length;
+  return gallrary.slice(offset, limit ? offset + limit : length);
 }
