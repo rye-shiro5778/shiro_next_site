@@ -1,4 +1,7 @@
-import FlakesFall from "@/art/p5/FlaksFall";
+import { Induction } from "@/components/atoms/Induction";
+import { Title } from "@/components/atoms/Typography/Title";
+import { GallraryCardList } from "@/components/organisms/GallaryCardList";
+import { Hero } from "@/components/templates/Hero";
 import Layout from "@/components/templates/Layouts";
 import type { NextPageWithLayout } from "next";
 import Head from "next/head";
@@ -12,15 +15,18 @@ const Home: NextPageWithLayout = () => {
       </Head>
 
       <main>
-        <div className={`h-[100vh] w-[100%] relative`}>
-          <div>
-            <FlakesFall cWidth="windowWidth" cHeight="windowHeight" />
-          </div>
+        <Hero />
+        <div className="absolute bottom-0 left-[47%] mb-4">
+          <Induction />
         </div>
+        <Title level={3} className="text-center mt-8">
+          Gallrary
+        </Title>
+        <GallraryCardList limit={4} />;
       </main>
     </>
   );
 };
 
-Home.getLayout = (page) => <Layout>{page}</Layout>;
+Home.getLayout = (page) => <Layout isHeaderOverlay={true}>{page}</Layout>;
 export default Home;

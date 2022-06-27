@@ -1,52 +1,42 @@
-import { Text } from "@/components/atoms/Text";
+import { gallraryList } from "@/art/gallary";
+import { Text } from "@/components/atoms/Typography/Text";
+import { Title } from "@/components/atoms/Typography/Title";
+import { Pagination } from "@/components/molecules/Pagenation";
+import { GallraryCardList } from "@/components/organisms/GallaryCardList";
 import Layout from "@/components/templates/Layouts";
-import { getGallraryList } from "@/utils/getGallaryList";
 import type { NextPageWithLayout } from "next";
-import { useMemo } from "react";
+import { useRouter } from "next/router";
 
 type Props = {};
 
 const Page: NextPageWithLayout<Props> = ({}) => {
-  const gallaryList = useMemo(() => getGallraryList({}), []);
+  const router = useRouter();
+  if (!router.isReady) {
+    return null;
+  }
+  const { page } = router.query;
+  let offset = 0;
+  const limit: number = 8;
+  if (page && typeof page === "string" && typeof Number(page) === "number") {
+    offset = Number(page) === 1 ? 0 : (Number(page) - 1) * limit;
+  }
+
+  console.log({ page, offset, limit });
+
   return (
-    <div className="container px-4 mx-auto grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {gallaryList.map(({ title, description, postedDate, id, card, tags }) => {
-        return (
-          <div
-            key={id}
-            className="max-w-sm rounded overflow-hidden shadow-lg bg-white"
-          >
-            <Text
-              type="link"
-              href={`/gallary/${id}`}
-              className={"text-gray-400 hover:"}
-            >
-              <>
-                <div className="w-full">{card}</div>
-                <div className="mx-6 my-2">
-                  <div className="font-bold text-xl">
-                    <p className={"text-black"}>{title}</p>
-                  </div>
-                  <div className="flex justify-between py-2">
-                    <p className={"text-gray-600"}>{postedDate}</p>
-                    <div className="pl-6 ">
-                      {tags &&
-                        tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="inline-block bg-gray-200 rounded-full px-3 text-sm font-semibold text-gray-700 mr-2 "
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                    </div>
-                  </div>
-                </div>
-              </>
-            </Text>
-          </div>
-        );
-      })}
+    <div className="container mx-auto">
+      <div className="flex mt-4 mx-2 items-center">
+        <Title level={3} className="">
+          Gallrary
+        </Title>
+        <Text className="mx-8">~creative coding~</Text>
+      </div>
+      <GallraryCardList limit={limit} offset={offset} />
+      <Pagination
+        perPage={limit}
+        totalCount={Object.keys(gallraryList).length}
+        pageRoot={"/gallary?page="}
+      />
     </div>
   );
 };

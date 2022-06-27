@@ -1,5 +1,5 @@
 import { gallraryList } from "@/art/gallary";
-import { Text } from "@/components/atoms/Text";
+import { Text } from "@/components/atoms/Typography";
 import Layout from "@/components/templates/Layouts";
 import type { GetStaticPaths, GetStaticProps, NextPageWithLayout } from "next";
 
@@ -14,13 +14,13 @@ const Page: NextPageWithLayout<Props> = ({ id }) => {
         <div>{sketch}</div>
         <div className={`absolute  bottom-8 px-4 w-[100%] z-[100] mt-2 `}>
           <div className="container mx-auto">
-            <Text type="text" className="text-3xl lg:text-4xl">
+            <Text type="text" className="text-4xl lg:text-5xl">
               {title}
             </Text>
-            <div className="container flex px-2 pb-4 ">
+            <div className="container flex px-2 pb-4 text-lg">
               <Text
                 type="text"
-                className="mr-2"
+                className="mr-4"
               >{`posted: ${postedDate}`}</Text>
               <Text type="text">{`updated: ${updatedDate}`}</Text>
             </div>
@@ -48,5 +48,9 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   };
 };
 
-Page.getLayout = (page) => <Layout isStack={true}>{page}</Layout>;
+Page.getLayout = (page) => (
+  <Layout isHeaderOverlay={true} isFooterOverlay={true}>
+    {page}
+  </Layout>
+);
 export default Page;
