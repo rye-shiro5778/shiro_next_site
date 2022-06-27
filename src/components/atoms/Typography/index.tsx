@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { Props } from "./type";
+import { Props, TextType } from "./type";
 
-export const Text: React.VFC<Props> = (props) => {
-  const { type, children, className, size = "m" } = props;
+export const Text: React.VFC<Props<TextType>> = (props) => {
+  const { type, children, className, size = "base" } = props;
   if (!type) {
     return <span className={"text-white " + className}>{children}</span>;
   }

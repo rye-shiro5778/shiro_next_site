@@ -1,4 +1,4 @@
-import { Link } from "@/components/atoms/Link";
+import { Button } from "@/components/atoms/Button";
 import { routes } from "@/utils/constants/constant";
 import { memo } from "react";
 
@@ -8,14 +8,14 @@ export const Routes: React.VFC = memo(() => {
       {routes.map(({ label, href, disableNav }) => {
         if (disableNav) return;
         return (
-          <Link
-            type="link"
+          <Button
+            btnType="link"
             href={href}
-            className="mt-3 mx-3 lg:mt-0 lg:mx-4"
+            className="mt-3 mr-6 lg:mt-0"
             key={label}
           >
             {label}
-          </Link>
+          </Button>
         );
       })}
     </div>

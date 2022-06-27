@@ -3,21 +3,32 @@ import { Footer } from "../Footer";
 
 type Props = {
   children: JSX.Element;
-  isStack?: boolean;
+  isHeaderOverlay?: boolean;
+  isFooterOverlay?: boolean;
 };
 
-export default function Layout({ children, isStack }: Props) {
+export default function Layout({
+  children,
+  isHeaderOverlay,
+  isFooterOverlay,
+}: Props) {
   return (
     <>
       <div
         className={
-          isStack ? "absolute top-0 left-0 w-[100%] z-[100] mt-1" : "mt-2"
+          isHeaderOverlay
+            ? "absolute top-0 left-0 w-[100%] z-[100] pt-1"
+            : "pt-2"
         }
       >
         <Navbar />
       </div>
       {children}
-      <div className={isStack ? "absolute  bottom-4 right-4 w-[100%]" : "mt-2"}>
+      <div
+        className={
+          isFooterOverlay ? "absolute  bottom-4 right-4 w-[100%]" : "pt-2"
+        }
+      >
         <Footer />
       </div>
     </>

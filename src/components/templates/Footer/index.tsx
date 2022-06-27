@@ -1,4 +1,4 @@
-import { Text } from "@/components/atoms/Text";
+import { Text } from "@/components/atoms/Typography";
 
 export const Footer: React.VFC = () => {
   return (

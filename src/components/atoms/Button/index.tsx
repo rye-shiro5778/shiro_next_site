@@ -19,14 +19,14 @@ export const Button: React.VFC<Props> = memo(
     switch (btnType) {
       case "primary":
         additionalClassName +=
-          "bg-indigo-600 text-white hover:text-gray-600 hover:bg-indigo-200";
+          "bg-indigo-600 text-white  px-2 hover:text-gray-600 hover:bg-indigo-200";
         break;
       case "dashed":
         additionalClassName +=
-          "text-white border-dashed border-2 border-white hover:border-gray-600 hover:text-gray-600";
+          "text-white border-dashed border-2 px-2 border-white hover:border-gray-600 hover:text-gray-600";
         break;
       case "default":
-        additionalClassName += "bg-white text-black";
+        additionalClassName += "bg-white text-black px-2";
         break;
       case "link":
       case "text":
@@ -36,7 +36,7 @@ export const Button: React.VFC<Props> = memo(
 
     const Button: React.VFC = () => (
       <button
-        className={`flex items-center px-4 py-2 ${additionalClassName}`}
+        className={`flex items-center py-2 ${additionalClassName}`}
         {...btnProps}
       >
         {icon && <span className="w-7 h-7 p-1 text-base ml-1">{icon}</span>}

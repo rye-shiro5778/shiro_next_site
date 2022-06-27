@@ -10,7 +10,7 @@ export const Link: React.VFC<Props> = memo((props) => {
       {children}
     </a>
   ) : (
-    <NextLink href={href} prefetch={!process.env.STORYBOOK} {...linkProps}>
+    <NextLink href={href} {...linkProps} passHref={true}>
       <a>{children}</a>
     </NextLink>
   );

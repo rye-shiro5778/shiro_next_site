@@ -1,26 +1,33 @@
 import { Button } from "@/components/atoms/Button";
-import { Link } from "@/components/atoms/Link";
 import { Externals } from "@/components/organisms/Links/Externals";
 import { Routes } from "@/components/organisms/Links/Routes";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FaHamburger } from "react-icons/fa";
 
 export const Navbar: React.VFC = () => {
-  const { width, height } = useWindowSize();
+  const { width } = useWindowSize();
   const [isHide, setIsHide] = useState(true);
   const onClick = useCallback(() => setIsHide(!isHide), [isHide, setIsHide]);
+
+  useEffect(() => {
+    if (width > 1024) {
+      setIsHide(true);
+    }
+  }, [width]);
+
   return (
-    <nav>
+    <nav className={!isHide ? "bg-gray-900  top-0 left-0 w-full" : ""}>
       <div className="container px-3 py-4 mx-auto lg:flex lg:justify-between lg:items-center">
         <div className="lg:flex lg:items-center">
           <div className="flex items-center justify-between">
-            <Link
+            <Button
+              btnType="link"
               href="/"
-              className="font-bold lg:text-3xl hover:text-gray-300"
+              className="text-white text-3xl font-bold lg:text-6xl hover:text-gray-300"
             >
               White
-            </Link>
+            </Button>
             <div className="flex lg:hidden">
               <Button aria-label="toggle menu" btnType="text" onClick={onClick}>
                 <FaHamburger />
