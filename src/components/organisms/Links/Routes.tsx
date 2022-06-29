@@ -1,5 +1,5 @@
 import { Button } from "@/components/atoms/Button";
-import { routes } from "@/utils/constants/constant";
+import { routes } from "@/constant";
 import { memo } from "react";
 
 export const Routes: React.VFC = memo(() => {

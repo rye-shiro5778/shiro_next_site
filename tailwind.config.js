@@ -12,8 +12,8 @@ module.exports = {
       "2xl": "1.875rem",
       "3xl": "2.25rem",
       "4xl": "3rem",
-      "5xl": "3.5rem",
-      "6xl": "4rem",
+      "5xl": "4rem",
+      "6xl": "5rem",
     },
     keyframes: {
       bounce100: {

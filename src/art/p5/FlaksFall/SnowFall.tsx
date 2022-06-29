@@ -18,11 +18,11 @@ export type Props = CanvasSize &
 export const SnowFall: React.VFC<Props> = ({
   cWidth,
   cHeight,
-  flakesNum = 100,
+  flakesNum = 90,
   minSize = 1,
   maxSize = 3,
-  maxSpeed = 1,
-  minSpeed = 0.5,
+  maxSpeed = 1.5,
+  minSpeed = 1,
   xMove = 1,
 }) => {
   let flakes: any[] = [];

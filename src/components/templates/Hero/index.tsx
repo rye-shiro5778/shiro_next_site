@@ -1,4 +1,5 @@
 import { RandomBrush } from "@/art/p5/RandomWalk/RandomBrush";
+import { Title } from "@/components/atoms/Typography/Title";
 
 export const Hero: React.VFC = () => {
   //   const list = useMemo(
@@ -27,20 +28,20 @@ export const Hero: React.VFC = () => {
 
   return (
     <>
-      <div className={`h-[100vh] w-[100%] relative`}>
+      <div className={`h-[100vh]`}>
         <RandomBrush
           key={3}
           cWidth={"windowWidth"}
           cHeight={"windowHeight"}
           num={150}
           maxFrameCount={280}
+          color={{ r: 50, g: 256, b: 200 }}
         />
-        ,
-        {/* {heroCanvas}
-         */}
-        {/* <div className="absolute left-[40%] top-[40%] right-[50%] bottom-[50%] m-auto ">
-          <Title className="text-6xl">Dive Into Creative ...</Title>
-        </div> */}
+        <div className="absolute left-[50%] top-[50%]  w-full z-[100] translate-x-[-50%] translate-y-[-50%]">
+          <Title className="text-6xl text-white text-center">
+            Dive Into Creative ...
+          </Title>
+        </div>
       </div>
     </>
   );

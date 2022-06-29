@@ -1,4 +1,5 @@
 import { gallraryList } from "@/art/gallary";
+import { Tag } from "@/components/atoms/Tag";
 import { Text } from "@/components/atoms/Typography";
 import Layout from "@/components/templates/Layouts";
 import type { GetStaticPaths, GetStaticProps, NextPageWithLayout } from "next";
@@ -6,7 +7,7 @@ import type { GetStaticPaths, GetStaticProps, NextPageWithLayout } from "next";
 type Props = { id: string };
 
 const Page: NextPageWithLayout<Props> = ({ id }) => {
-  const { sketch, title, description, postedDate, updatedDate } =
+  const { sketch, title, description, postedDate, updatedDate, tags } =
     gallraryList[id];
   return (
     <>
@@ -14,9 +15,17 @@ const Page: NextPageWithLayout<Props> = ({ id }) => {
         <div>{sketch}</div>
         <div className={`absolute  bottom-8 px-4 w-[100%] z-[100] mt-2 `}>
           <div className="container mx-auto">
-            <Text type="text" className="text-4xl lg:text-5xl">
-              {title}
-            </Text>
+            <div className="flex items-baseline">
+              <Text type="text" className="text-4xl lg:text-5xl">
+                {title}
+              </Text>
+              <div className="mx-4">
+                {tags &&
+                  tags?.map((tag) => {
+                    return <Tag key={tag}>{tag}</Tag>;
+                  })}
+              </div>
+            </div>
             <div className="container flex px-2 pb-4 text-lg">
               <Text
                 type="text"

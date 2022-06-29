@@ -8,8 +8,10 @@ export const Button: React.VFC<Props> = memo(
     icon,
     className,
     btnType = "default",
+    size = "base",
     href,
     target,
+    isOnlyText = true,
     ...btnProps
   }) => {
     let additionalClassName =
@@ -29,6 +31,10 @@ export const Button: React.VFC<Props> = memo(
         additionalClassName += "bg-white text-black px-2";
         break;
       case "link":
+        additionalClassName += isOnlyText
+          ? "text-white hover:text-gray-400"
+          : "bg-white text-black px-2";
+
       case "text":
         additionalClassName += "text-white hover:text-gray-400";
         break;
@@ -39,8 +45,10 @@ export const Button: React.VFC<Props> = memo(
         className={`flex items-center py-2 ${additionalClassName}`}
         {...btnProps}
       >
-        {icon && <span className="w-7 h-7 p-1 text-base ml-1">{icon}</span>}
-        <span className="mx-1 text-base">{children}</span>
+        {icon && (
+          <span className={`w-7 h-7 p-1 text-${size} ml-1`}>{icon}</span>
+        )}
+        <span className={`mx-1 text-${size}`}>{children}</span>
       </button>
     );
 

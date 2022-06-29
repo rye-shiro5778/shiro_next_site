@@ -17,14 +17,16 @@ export const Navbar: React.VFC = () => {
   }, [width]);
 
   return (
-    <nav className={!isHide ? "bg-gray-900  top-0 left-0 w-full" : ""}>
+    <nav
+      className={!isHide ? "bg-gray-800 opacity-80  top-0 left-0 w-full" : ""}
+    >
       <div className="container px-3 py-4 mx-auto lg:flex lg:justify-between lg:items-center">
         <div className="lg:flex lg:items-center">
           <div className="flex items-center justify-between">
             <Button
               btnType="link"
               href="/"
-              className="text-white text-3xl font-bold lg:text-6xl hover:text-gray-300"
+              className="text-white text-5xl font-bold lg:text-6xl hover:text-gray-300"
             >
               White
             </Button>

@@ -1,9 +1,36 @@
-import { Text } from "@/components/atoms/Typography";
+import { Button } from "@/components/atoms/Button";
+import { Terminal } from "@/components/atoms/Others/Terminal";
 import Layout from "@/components/templates/Layouts";
 import type { NextPageWithLayout } from "next";
+import { useRouter } from "next/router";
 
 const ErrorPage: NextPageWithLayout = () => {
-  return <Text type="text">404</Text>;
+  const router = useRouter();
+  const { pathname, basePath } = router;
+  console.log(router);
+  return (
+    <div className="container mx-auto my-10 h-[80vh]">
+      <Terminal
+        cmd={"curl http://localhost:3000" + pathname}
+        content={
+          <div className="mt-3 ml-3">
+            <p>404 Not Found</p>
+            <div className="flex items-center">
+              <p>Please Back 　　</p>
+              <Button
+                btnType="link"
+                size="3xl"
+                href="/"
+                className="border-b-2 border-sky-300 text-sky-300"
+              >
+                this link
+              </Button>
+            </div>
+          </div>
+        }
+      />
+    </div>
+  );
 };
 
 ErrorPage.getLayout = (page) => <Layout>{page}</Layout>;

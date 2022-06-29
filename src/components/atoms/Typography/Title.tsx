@@ -9,13 +9,13 @@ export const Title: React.VFC<Omit<Props<TitleType>, "size">> = ({
   switch (level) {
     case 1:
       return (
-        <h1 className={`text-white text-5xl ${className}`} {...hProps}>
+        <h1 className={`text-white text-4xl ${className}`} {...hProps}>
           {children}
         </h1>
       );
     case 2:
       return (
-        <h2 className={`text-white text-4xl ${className}`} {...hProps}>
+        <h2 className={`text-white text-3xl ${className}`} {...hProps}>
           {children}
         </h2>
       );

@@ -24,10 +24,10 @@ export const routes: {
     label: "about",
     href: "/about",
   },
-  {
-    label: "contact",
-    href: "/contact",
-  },
+  // {
+  //   label: "contact",
+  //   href: "/contact",
+  // },
 ];
 
 export const links: {

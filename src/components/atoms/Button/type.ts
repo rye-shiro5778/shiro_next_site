@@ -1,3 +1,5 @@
+import { Size } from "@/components/commonType";
+
 type ButtonProps = JSX.IntrinsicElements["button"];
 type AProps = JSX.IntrinsicElements["a"];
 
@@ -7,5 +9,6 @@ export type Props = {
   children?: JSX.Element | string;
   icon?: JSX.Element;
   btnType?: Types;
+  isOnlyText?: boolean;
 } & ButtonProps &
-  AProps;
+  AProps & { size?: Size };

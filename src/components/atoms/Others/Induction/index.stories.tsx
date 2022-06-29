@@ -2,7 +2,7 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Induction } from "./index";
 
 export default {
-  title: "Atoms/Induction",
+  title: "Atoms/Others/Induction",
   component: Induction,
 } as ComponentMeta<typeof Induction>;
 

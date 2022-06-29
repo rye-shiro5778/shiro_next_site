@@ -12,6 +12,11 @@ type Props = CanvasSize & {
   num?: number;
   drawSpeed?: number;
   maxFrameCount?: number;
+  color?: {
+    r: number;
+    g: number;
+    b: number;
+  };
 };
 
 export const RandomBrush: React.VFC<Props> = ({
@@ -20,6 +25,7 @@ export const RandomBrush: React.VFC<Props> = ({
   num = 100,
   drawSpeed = 40,
   maxFrameCount = 320,
+  color = { r: 256, g: 256, b: 256 },
 }) => {
   let points: { width: number; height: number; color: p5Types.Color }[] = [];
   const preload = (p5: p5Types) => {};
@@ -35,7 +41,11 @@ export const RandomBrush: React.VFC<Props> = ({
   }) => {
     const pointX = p5.random(width);
     const pointY = p5.random(height);
-    const pointColor = p5.color(p5.random(256), p5.random(256), p5.random(256));
+    const pointColor = p5.color(
+      p5.random(color.r),
+      p5.random(color.g),
+      p5.random(color.b)
+    );
     p5.stroke(pointColor);
     p5.point(pointX, pointY);
     points.push({ width: pointX, height: pointY, color: pointColor });

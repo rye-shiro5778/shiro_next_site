@@ -1,4 +1,5 @@
-import { Induction } from "@/components/atoms/Induction";
+import { Button } from "@/components/atoms/Button";
+import { Induction } from "@/components/atoms/Others/Induction";
 import { Title } from "@/components/atoms/Typography/Title";
 import { GallraryCardList } from "@/components/organisms/GallaryCardList";
 import { Hero } from "@/components/templates/Hero";
@@ -15,14 +16,38 @@ const Home: NextPageWithLayout = () => {
       </Head>
 
       <main>
-        <Hero />
-        <div className="absolute bottom-0 left-[47%] mb-4">
-          <Induction />
-        </div>
-        <Title level={3} className="text-center mt-8">
-          Gallrary
-        </Title>
-        <GallraryCardList limit={4} />;
+        <section>
+          <Hero />
+          <div className="absolute bottom-0 left-[47%] mb-4">
+            <Induction />
+          </div>
+        </section>
+        <section className="container mx-auto">
+          <Title level={3} className="text-center mt-8">
+            Gallary
+          </Title>
+          <GallraryCardList limit={4} />
+          <div className="flex justify-end">
+            <>
+              <Button btnType="link" size="lg" href="/gallary">
+                See More...
+              </Button>
+            </>
+          </div>
+        </section>
+        <section className="container mx-auto">
+          <Title level={3} className="text-center mt-8">
+            Blog
+          </Title>
+          <GallraryCardList limit={4} />
+          <div className="flex justify-end">
+            <>
+              <Button btnType="link" size="lg" href="/gallary">
+                See More...
+              </Button>
+            </>
+          </div>
+        </section>
       </main>
     </>
   );

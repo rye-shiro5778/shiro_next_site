@@ -1,5 +1,7 @@
+import { Terminal } from "@/components/atoms/Others/Terminal";
 import { Card } from "@/components/molecules/Card";
 import { getGallraryList } from "@/utils/getGallaryList";
+import { useRouter } from "next/router";
 import { useMemo } from "react";
 
 type Props = {
@@ -16,8 +18,16 @@ export const GallraryCardList: React.VFC<Props> = ({ limit, offset = 0 }) => {
       }),
     [limit, offset]
   );
+
+  const router = useRouter();
+  const { pathname } = router;
+
   if (gallaryList.length === 0) {
-    return <div>Not Found</div>;
+    return (
+      <div className="container my-10">
+        <Terminal content="Not found contens" cmd={`curl ${pathname}`} />
+      </div>
+    );
   }
   return (
     <div className="container px-4 mx-auto grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -26,6 +36,7 @@ export const GallraryCardList: React.VFC<Props> = ({ limit, offset = 0 }) => {
           <Card
             key={id}
             title={title}
+            tagPosition={"flex"}
             img={card}
             subTitle={`Posted:${postedDate}`}
             tags={tags}

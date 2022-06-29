@@ -10,30 +10,28 @@ import { useRouter } from "next/router";
 type Props = {};
 
 const Page: NextPageWithLayout<Props> = ({}) => {
+  const perPage: number = 8;
   const router = useRouter();
   if (!router.isReady) {
     return null;
   }
   const { page } = router.query;
   let offset = 0;
-  const limit: number = 8;
   if (page && typeof page === "string" && typeof Number(page) === "number") {
-    offset = Number(page) === 1 ? 0 : (Number(page) - 1) * limit;
+    offset = Number(page) === 1 ? 0 : (Number(page) - 1) * perPage;
   }
-
-  console.log({ page, offset, limit });
 
   return (
     <div className="container mx-auto">
-      <div className="flex mt-4 mx-2 items-center">
+      <div className="flex ml-8 mt-4 mr-3 items-center">
         <Title level={3} className="">
           Gallrary
         </Title>
         <Text className="mx-8">~creative coding~</Text>
       </div>
-      <GallraryCardList limit={limit} offset={offset} />
+      <GallraryCardList limit={perPage} offset={offset} />
       <Pagination
-        perPage={limit}
+        perPage={perPage}
         totalCount={Object.keys(gallraryList).length}
         pageRoot={"/gallary?page="}
       />

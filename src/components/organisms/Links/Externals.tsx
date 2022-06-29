@@ -1,5 +1,5 @@
 import { Button } from "@/components/atoms/Button";
-import { links } from "@/utils/constants/constant";
+import { links } from "@/constant";
 import { memo } from "react";
 
 export const Externals: React.VFC = memo(() => {
