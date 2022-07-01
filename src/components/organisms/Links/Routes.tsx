@@ -13,6 +13,7 @@ export const Routes: React.VFC = memo(() => {
             href={href}
             className="mt-3 mr-6 lg:mt-0"
             key={label}
+            size={"lg"}
           >
             {label}
           </Button>

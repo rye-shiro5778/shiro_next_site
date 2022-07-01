@@ -11,7 +11,8 @@ export const Externals: React.VFC = memo(() => {
           btnType="link"
           href={href}
           aria-label={label}
-          className="text-xl mx-2"
+          className="mx-2"
+          size="lg"
           target={"_blank"}
         >
           {icon}
