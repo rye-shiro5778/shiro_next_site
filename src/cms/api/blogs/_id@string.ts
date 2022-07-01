@@ -1,4 +1,4 @@
-import { Blog, MicroCMSObjectContent, MicroCMSQueries } from "@/cms/type";
+import { Blog, MicroCMSObjectContent, MicroCMSQueries } from "@/cms/utils/type";
 export type Methods = {
   get: {
     query?: Pick<MicroCMSQueries, "draftKey" | "fields" | "depth">;
