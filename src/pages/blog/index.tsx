@@ -1,125 +1,31 @@
-import { client } from "@/cms/cmsClient";
-import {
-  Blog,
-  Category,
-  MicroCMSContentId,
-  MicroCMSDate,
-  Tag,
-} from "@/cms/type";
-import { Title } from "@/components/atoms/Typography/Title";
-import { Card } from "@/components/molecules/Card";
-import Layout from "@/components/templates/Layouts";
-import dayjs from "dayjs";
+import { client } from "@/cms/utils/cmsClient";
+import { Blog, MicroCMSContentId, MicroCMSDate } from "@/cms/utils/type";
+import { BlogListPage } from "@/components/templates/BlogList";
+import BlogLayout from "@/components/templates/Layouts/BlogLayout";
 import type { GetStaticProps, NextPageWithLayout } from "next";
-import Image from "next/image";
 
 type Props = {
   blogs: (Blog & MicroCMSContentId & MicroCMSDate)[];
-  tags: (Tag & MicroCMSContentId & MicroCMSDate)[];
-  categories: (Category & MicroCMSContentId & MicroCMSDate)[];
+  totalCount: number;
+  offset: number;
+  limit: number;
 };
 
-const Blog: NextPageWithLayout<Props> = ({ blogs, tags, categories }) => {
-  console.log({ blogs, tags, categories });
-
-  return (
-    <div className="container mx-auto">
-      <div className="flex ml-8 mt-4 mr-3 items-center">
-        <Title level={3} className="">
-          Tech Blog
-        </Title>
-      </div>
-      <div className="container mt-8 px-4 mx-auto grid grid-cols-1 gap-8  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {blogs.map(
-          ({ title, description, publishedAt, eyecatch, tags, id }) => {
-            const img = eyecatch?.url ? (
-              <Image alt={title} src={eyecatch.url} width={400} height={250} />
-            ) : (
-              <></>
-            );
-
-            const publishedDate = dayjs(publishedAt).format("YYYY-MM-DD");
-
-            return (
-              <Card
-                key={title}
-                title={title}
-                subTitle={publishedDate}
-                tagPosition={"block"}
-                img={img}
-                tags={tags?.map((tag) => tag.name)}
-                href={`/blog/${id}`}
-              />
-            );
-          }
-        )}
-        {blogs.map(
-          ({ title, description, publishedAt, eyecatch, tags, id }) => {
-            const img = eyecatch?.url ? (
-              <Image alt={title} src={eyecatch.url} width={400} height={250} />
-            ) : (
-              <></>
-            );
-
-            const publishedDate = dayjs(publishedAt).format("YYYY-MM-DD");
-
-            return (
-              <Card
-                key={title}
-                title={title}
-                subTitle={publishedDate}
-                tagPosition={"block"}
-                img={img}
-                tags={tags?.map((tag) => tag.name)}
-                href={`/blog/${id}`}
-              />
-            );
-          }
-        )}
-        {blogs.map(
-          ({ title, description, publishedAt, eyecatch, tags, id }) => {
-            const img = eyecatch?.url ? (
-              <Image alt={title} src={eyecatch.url} width={400} height={250} />
-            ) : (
-              <></>
-            );
-
-            const publishedDate = dayjs(publishedAt).format("YYYY-MM-DD");
-
-            return (
-              <Card
-                key={title}
-                title={title}
-                subTitle={publishedDate}
-                tagPosition={"block"}
-                img={img}
-                tags={tags?.map((tag) => tag.name)}
-                href={`/blog/${id}`}
-              />
-            );
-          }
-        )}
-      </div>
-    </div>
-  );
+const Page: NextPageWithLayout<Props> = (props) => {
+  return <BlogListPage {...props} />;
 };
 
-Blog.getLayout = (page) => <Layout>{page}</Layout>;
+Page.getLayout = (page) => <BlogLayout>{page}</BlogLayout>;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const [blogs, tags, categories] = await Promise.all([
-    client.blogs.$get({ query: { limit: 8 } }),
-    client.tags.$get(),
-    client.categories.$get(),
-  ]);
-
-  console.log(blogs.contents);
+  const blogs = await client.blogs.$get({ query: { limit: 8 } });
   return {
     props: {
       blogs: blogs.contents,
-      tags: tags.contents,
-      categories: categories.contents,
+      totalCount: blogs.totalCount,
+      offset: blogs.offset,
+      limit: blogs.limit,
     },
   };
 };
-export default Blog;
+export default Page;

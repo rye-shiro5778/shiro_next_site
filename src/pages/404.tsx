@@ -4,10 +4,9 @@ import Layout from "@/components/templates/Layouts";
 import type { NextPageWithLayout } from "next";
 import { useRouter } from "next/router";
 
-const ErrorPage: NextPageWithLayout = () => {
+const Page: NextPageWithLayout = () => {
   const router = useRouter();
-  const { pathname, basePath } = router;
-  console.log(router);
+  const { pathname } = router;
   return (
     <div className="container mx-auto my-10 h-[80vh]">
       <Terminal
@@ -33,5 +32,5 @@ const ErrorPage: NextPageWithLayout = () => {
   );
 };
 
-ErrorPage.getLayout = (page) => <Layout>{page}</Layout>;
-export default ErrorPage;
+Page.getLayout = (page) => <Layout>{page}</Layout>;
+export default Page;

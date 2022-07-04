@@ -1,7 +1,6 @@
 import { gallraryList } from "@/art/gallary";
-import { Text } from "@/components/atoms/Typography/Text";
 import { Title } from "@/components/atoms/Typography/Title";
-import { Pagination } from "@/components/molecules/Pagenation";
+import { Pagenation } from "@/components/molecules/Pagenation";
 import { GallraryCardList } from "@/components/organisms/GallaryCardList";
 import Layout from "@/components/templates/Layouts";
 import type { NextPageWithLayout } from "next";
@@ -23,18 +22,21 @@ const Page: NextPageWithLayout<Props> = ({}) => {
 
   return (
     <div className="container mx-auto">
-      <div className="flex ml-8 mt-4 mr-3 items-center">
-        <Title level={3} className="">
-          Gallrary
-        </Title>
-        <Text className="mx-8">~creative coding~</Text>
+      <div className="container mx-auto">
+        <div className="ml-8 flex items-center  mt-4 mb-2 mr-3 ">
+          <Title level={3}>Gallrary</Title>
+        </div>
+        <div className="container px-4 mx-auto grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <GallraryCardList limit={perPage} offset={offset} />
+        </div>
+        <div className="mt-4">
+          <Pagenation
+            perPage={perPage}
+            totalCount={Object.keys(gallraryList).length}
+            pageRoot={"/gallary?page="}
+          />
+        </div>
       </div>
-      <GallraryCardList limit={perPage} offset={offset} />
-      <Pagination
-        perPage={perPage}
-        totalCount={Object.keys(gallraryList).length}
-        pageRoot={"/gallary?page="}
-      />
     </div>
   );
 };

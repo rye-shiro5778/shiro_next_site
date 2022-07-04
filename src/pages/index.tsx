@@ -1,13 +1,40 @@
+import { client } from "@/cms/utils/cmsClient";
+import { Blog, MicroCMSContentId, MicroCMSDate } from "@/cms/utils/type";
 import { Button } from "@/components/atoms/Button";
-import { Induction } from "@/components/atoms/Others/Induction";
 import { Title } from "@/components/atoms/Typography/Title";
+import { BlogCardList } from "@/components/organisms/Blog/BlogCardList";
 import { GallraryCardList } from "@/components/organisms/GallaryCardList";
 import { Hero } from "@/components/templates/Hero";
 import Layout from "@/components/templates/Layouts";
-import type { NextPageWithLayout } from "next";
+import type { GetStaticProps, NextPageWithLayout } from "next";
 import Head from "next/head";
 
-const Home: NextPageWithLayout = () => {
+type Props = {
+  blogs: (Blog & MicroCMSContentId & MicroCMSDate)[];
+};
+
+const Home: NextPageWithLayout<Props> = ({ blogs }) => {
+  const menu = [
+    {
+      title: "Gallary",
+      children: (
+        <div className="container px-4 mx-auto grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <GallraryCardList limit={4} />
+        </div>
+      ),
+      href: "/gallary",
+    },
+    {
+      title: "Blog",
+      children: (
+        <div className="container px-4 mx-auto grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <BlogCardList blogs={blogs} />
+        </div>
+      ),
+      href: "/blog",
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -16,42 +43,38 @@ const Home: NextPageWithLayout = () => {
       </Head>
 
       <main>
-        <section>
+        <section className="mb-2">
           <Hero />
-          <div className="absolute bottom-0 left-[47%] mb-4">
-            <Induction />
-          </div>
         </section>
-        <section className="container mx-auto">
-          <Title level={3} className="text-center mt-8">
-            Gallary
-          </Title>
-          <GallraryCardList limit={4} />
-          <div className="flex justify-end">
-            <>
-              <Button btnType="link" size="lg" href="/gallary">
+        {menu.map(({ title, href, children }) => (
+          <section key={`top-${title}`} className="container mx-auto mt-8">
+            <Title level={3} className="text-center">
+              {title}
+            </Title>
+            {children}
+
+            <div className="flex justify-end ">
+              <Button btnType="link" size="lg" href={href} className="mr-3">
                 See More...
               </Button>
-            </>
-          </div>
-        </section>
-        <section className="container mx-auto">
-          <Title level={3} className="text-center mt-8">
-            Blog
-          </Title>
-          <GallraryCardList limit={4} />
-          <div className="flex justify-end">
-            <>
-              <Button btnType="link" size="lg" href="/gallary">
-                See More...
-              </Button>
-            </>
-          </div>
-        </section>
+            </div>
+          </section>
+        ))}
       </main>
     </>
   );
 };
 
 Home.getLayout = (page) => <Layout isHeaderOverlay={true}>{page}</Layout>;
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const blogs = await client.blogs.$get({ query: { limit: 4 } });
+
+  return {
+    props: {
+      blogs: blogs.contents,
+    },
+  };
+};
+
 export default Home;
