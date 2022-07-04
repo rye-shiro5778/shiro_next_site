@@ -13,8 +13,12 @@ const About: NextPageWithLayout = () => {
 
             <p className="mt-4 text-gray-500 dark:text-gray-400 lg:max-w-xl">
               新卒２年目の自社開発企業のフロントエンドエンジニア。
-              <br></br>
-              バックエンドも少し触ります。{" "}
+              <br />
+              バックエンドも少し触ります。
+              <br />
+              <br />
+              こちらのサイトは、React(Next.js) + TypeScript + tailwindcss
+              を使用して開発しています。{" "}
               {/* <a
                 className="font-bold text-blue-600 dark:text-blue-400"
                 href="#"
