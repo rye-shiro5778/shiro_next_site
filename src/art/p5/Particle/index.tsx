@@ -10,7 +10,7 @@ const Sketch = dynamic(import("react-p5"), {
 
 type Props = CanvasSize;
 
-export const Circle: React.VFC<Props> = ({ cWidth, cHeight }) => {
+export const Paricle: React.VFC<Props> = ({ cWidth, cHeight }) => {
   const preload = (p5: p5Types) => {};
 
   const setup = (p5: p5Types, canvasParentRef: Element) => {
@@ -24,11 +24,13 @@ export const Circle: React.VFC<Props> = ({ cWidth, cHeight }) => {
   const draw = (p5: p5Types) => {
     const { width, height } = p5CanvasSize({ p5, cWidth, cHeight });
     p5.frameRate(15);
-    p5.stroke(p5.random(30, 256), p5.random(30, 256), p5.random(30, 256));
+    p5.colorMode(p5.HSB);
+    p5.stroke(
+      p5.color(p5.random(20, 60), p5.random(50, 60), p5.random(50, 60))
+    );
     p5.ellipse(p5.random(width), height / 2, p5.random(320), p5.random(420));
     if (p5.frameCount > 100) {
       p5.clear();
-      p5.colorMode(p5.RGB);
       p5.background(p5.color("#1e293b"));
       p5.frameCount = 0;
       p5.frameRate(25);
@@ -37,7 +39,6 @@ export const Circle: React.VFC<Props> = ({ cWidth, cHeight }) => {
 
   const windowResized = (p5: p5Types) => {
     const { width, height } = p5CanvasSize({ p5, cWidth, cHeight });
-    p5.colorMode(p5.RGB);
     p5.background(p5.color("#1e293b"));
     p5.resizeCanvas(width, height);
     p5.frameCount = 0;

@@ -23,7 +23,7 @@ export const SnowFall: React.VFC<Props> = ({
   maxSize = 3,
   maxSpeed = 1.5,
   minSpeed = 1,
-  xMove = 1,
+  xMove = 1.5,
 }) => {
   let flakes: any[] = [];
 

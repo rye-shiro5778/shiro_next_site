@@ -72,32 +72,31 @@ export const Rain: React.VFC<Props> = ({
   const windowResized = (p5: p5Types) => {
     const { width, height } = p5CanvasSize({ p5, cWidth, cHeight });
     p5.resizeCanvas(width, height);
-    p5.background(p5.color("#1e293b"));
-    flakes = [];
-    for (let i = 0; i < flakesNum; i++) {
-      const flake = makeFlake({
-        p5,
-        width,
-        height,
-        minSize,
-        maxSize,
-        maxSpeed,
-        minSpeed,
-        xMove,
-        depiction: (p5, x: number, y: number) => {
-          let txt = "あめ";
-          let txt0 = "";
-          for (let i = 0; i < txt.length; i++) {
-            txt0 += txt.slice(i, i + 1) + "\n";
-          }
-          txt = txt0.slice(0, txt0.length - 1);
-          p5.text(txt, x, y);
-          p5.fill(p5.color("#d1e8f8"));
-        },
-      });
-      flakes.push(flake);
-    }
-    p5.loop();
+    // p5.background(p5.color("#1e293b"));
+    // flakes = [];
+    // for (let i = 0; i < flakesNum; i++) {
+    //   const flake = makeFlake({
+    //     p5,
+    //     width,
+    //     height,
+    //     minSize,
+    //     maxSize,
+    //     maxSpeed,
+    //     minSpeed,
+    //     xMove,
+    //     depiction: (p5, x: number, y: number) => {
+    //       let txt = "あめ";
+    //       let txt0 = "";
+    //       for (let i = 0; i < txt.length; i++) {
+    //         txt0 += txt.slice(i, i + 1) + "\n";
+    //       }
+    //       txt = txt0.slice(0, txt0.length - 1);
+    //       p5.text(txt, x, y);
+    //       p5.fill(p5.color("#d1e8f8"));
+    //     },
+    //   });
+    //   flakes.push(flake);
+    // }
   };
 
   return (

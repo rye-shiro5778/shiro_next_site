@@ -11,7 +11,7 @@ export const gallraryList: GallraryList = {
     title: "Random Circle",
     sketch: <Circle cWidth={"windowWidth"} cHeight={"windowHeight"} />,
     card: <Circle cWidth={400} cHeight={250} />,
-    description: "",
+    description: "p5jsでランダムに楕円を描写",
     postedDate: "2022-0521",
     updatedDate: "2022-0521",
     ogp: undefined,
@@ -20,7 +20,7 @@ export const gallraryList: GallraryList = {
   timercircle1: {
     id: "timercircle1",
     title: "Timer Circle",
-    description: "円と時間",
+    description: "p5jsによる円と時間",
     sketch: <TimerCircle1 cWidth={"windowWidth"} cHeight={"windowHeight"} />,
     card: <TimerCircle1 cWidth={400} cHeight={250} />,
     postedDate: "2022-0522",
@@ -31,7 +31,7 @@ export const gallraryList: GallraryList = {
   snowflakes1: {
     id: "snowflakes1",
     title: "SnowFall",
-    description: "雨が降る",
+    description: "雪が降る",
     sketch: <SnowFall cWidth={"windowWidth"} cHeight={"windowHeight"} />,
     card: <SnowFall cWidth={400} cHeight={250} />,
     postedDate: "2022-0622",
@@ -52,8 +52,8 @@ export const gallraryList: GallraryList = {
   },
   randombrush1: {
     id: "randombrush1",
-    title: "Brsuh",
-    description: "雨が降る",
+    title: "Brush",
+    description: "p5jsで実装したランダムウォークによる描写",
     sketch: (
       <RandomBrush cWidth={"windowWidth"} cHeight={"windowHeight"} num={200} />
     ),
