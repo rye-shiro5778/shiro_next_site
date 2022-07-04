@@ -29,8 +29,16 @@
     @apply text-sm mt-3 mb-2;
   }
 
+  a {
+    @apply text-blue-300 bg-slate-800;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   p {
-    @apply text-sm my-2 tracking-wider;
+    @apply text-sm my-2 tracking-wider leading-relaxed;
   }
 
   em {
@@ -103,16 +111,12 @@
 
   pre {
     @apply pl-2 pr-4 py-2 my-2 relative ml-0 overflow-auto;
-    // code {
-    //   // @apply text-white bg-black  rounded-lg overflow-scroll w-full;
-    // }
+    code {
+      @apply bg-gray-900 border-none;
+    }
   }
 
-  a {
-    // color: $primary-color;
-
-    &:hover {
-      text-decoration: underline;
-    }
+  code {
+    @apply border border-slate-700  bg-slate-700 py-1 px-2 rounded-lg font-bold;
   }
 }
