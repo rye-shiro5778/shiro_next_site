@@ -20,7 +20,7 @@ export function setPixel(
   pixel: Pixel
 ): void {
   const i = (y * img.width + x) * 4;
-  pixel.forEach((n) => (img.pixels[i + n] = pixel[n]));
+  pixel.forEach((n, index) => (img.pixels[i + index] = pixel[index]));
 }
 
 export function getPixelRGBA(p5: p5Types, pixel: Pixel) {

@@ -15,47 +15,58 @@ export const Sepia: React.VFC<Props> = ({ cWidth, cHeight }) => {
   let img: p5Types.Image;
 
   const preload = (p5: p5Types) => {
-    img = p5.loadImage("./flower.png");
+    img = p5.loadImage("/profile.png");
   };
 
   const setup = (p5: p5Types, canvasParentRef: Element) => {
     const { width, height } = p5CanvasSize({ p5, cWidth, cHeight });
     p5.createCanvas(width, height).parent(canvasParentRef);
-    if (!img) return;
-
-    img?.loadPixels();
-    p5.image(img, 0, 0, width, height);
+    const dest = p5.createImage(img.width, img.height);
+    dest.copy(img, 0, 0, img.width, img.height, 0, 0, img.width, img.height);
+    dest.loadPixels();
 
     for (let y = 0; y < img.height; y++) {
-      for (let x = 0; x < img.width; x++) {
+      for (let x = 0; x < dest.width; x++) {
         const [r, g, b, a] = getPixel(img, x, y);
 
         const nr = p5.min(255, r * 0.393 + g * 0.769 + b * 0.189);
         const ng = p5.min(255, r * 0.349 + g * 0.686 + b * 0.168);
         const nb = p5.min(255, r * 0.272 + g * 0.534 + b * 0.131);
 
-        setPixel(img, x, y, [nr, ng, nb, a]);
+        setPixel(dest, x, y, [nr, ng, nb, a]);
+      }
+    }
+    dest.updatePixels();
+    p5.image(dest, 0, 0, width, height);
+  };
+
+  const draw = (p5: p5Types) => {
+    let n = 1 * (p5.frameCount / 200);
+
+    if (p5.frameCount < 201) {
+      p5.frameCount = 0;
+    }
+
+    const { width, height } = p5CanvasSize({ p5, cWidth, cHeight });
+    img.loadPixels();
+
+    for (let y = 0; y < img.height; y++) {
+      for (let x = 0; x < img.width; x++) {
+        const [r, g, b, a] = getPixel(img, x, y);
+
+        const sr = p5.min(255, r * 0.393 + g * 0.769 + b * 0.189);
+        const sg = p5.min(255, r * 0.349 + g * 0.686 + b * 0.168);
+        const sb = p5.min(255, r * 0.272 + g * 0.534 + b * 0.131);
+
+        const r2 = r - (r - sr) * n;
+        const g2 = r - (g - sg) * n;
+        const b2 = r - (b - sb) * n;
+        setPixel(img, x, y, [r2, g2, b2, a]);
       }
     }
     img.updatePixels();
     p5.image(img, 0, 0, width, height);
   };
-
-  //   const draw = (p5: p5Types) => {
-  //     // const { width, height } = p5CanvasSize({ p5, cWidth, cHeight });
-  //     // p5.frameRate(15);
-  //     // p5.colorMode(p5.HSB);
-  //     // p5.stroke(
-  //     //   p5.color(p5.random(20, 60), p5.random(50, 60), p5.random(50, 60))
-  //     // );
-  //     // p5.ellipse(p5.random(width), height / 2, p5.random(320), p5.random(420));
-  //     // if (p5.frameCount > 100) {
-  //     //   p5.clear();
-  //     //   p5.background(p5.color("#1e293b"));
-  //     //   p5.frameCount = 0;
-  //     //   p5.frameRate(25);
-  //     // }
-  //   };
 
   //   function setPixel(x:number, y:number, ) {
   //     const i = (y * img.width + x) * 4;
@@ -86,7 +97,7 @@ export const Sepia: React.VFC<Props> = ({ cWidth, cHeight }) => {
     <Sketch
       preload={preload}
       setup={setup}
-      //   draw={draw}
+      // draw={draw}
       // windowResized={windowResized}
       //  mouseClicked={mouseClicked}
     />

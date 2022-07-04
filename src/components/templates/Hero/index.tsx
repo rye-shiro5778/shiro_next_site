@@ -1,6 +1,5 @@
 import { Rain } from "@/art/p5/FlaksFall/Rain";
 import { Induction } from "@/components/atoms/Others/Induction";
-import Image from "next/image";
 
 export const Hero: React.VFC = () => {
   //   const list = useMemo(
@@ -41,7 +40,7 @@ export const Hero: React.VFC = () => {
         /> */}
         <div className="absolute left-[50%] top-[50%]  w-full z-[10] translate-x-[-50%] translate-y-[-50%]">
           <div className="text-center mt-4">
-            <Image
+            <img
               src={"/logo2.png"}
               alt={"main logo"}
               width={298}

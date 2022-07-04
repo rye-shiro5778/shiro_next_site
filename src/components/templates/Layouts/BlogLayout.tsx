@@ -34,7 +34,7 @@ export default function BlogLayout({
             <div className="flex justify-center -mt-14 md:justify-end">
               <img
                 alt=""
-                className="object-cover object-center w-[120px] h-[120px] rounded-xl  border-black border-4"
+                className="object-cover object-center w-[120px] h-[120px] rounded-xl"
                 src="/profile.png"
                 width={120}
                 height={120}
