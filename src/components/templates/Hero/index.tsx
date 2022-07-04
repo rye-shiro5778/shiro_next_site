@@ -39,14 +39,13 @@ export const Hero: React.VFC = () => {
           color={{ r: 256, g: 256, b: 256 }}
         /> */}
         <div className="absolute left-[50%] top-[50%]  w-full z-[10] translate-x-[-50%] translate-y-[-50%]">
-          <div className="text-center mt-4">
-            <img
-              src={"/logo2.png"}
-              alt={"main logo"}
-              width={298}
-              height={365}
-            />
-          </div>
+          <img
+            src={"/logo2.png"}
+            alt={"main logo"}
+            width={298}
+            height={365}
+            className="mx-auto"
+          />
         </div>
       </div>
       <div className="absolute bottom-0 left-[47%] mb-4">
