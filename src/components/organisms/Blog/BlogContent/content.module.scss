@@ -1,0 +1,118 @@
+.content {
+  @apply text-white font-mono m-4;
+
+  h1 {
+    @apply text-3xl lg:text-4xl mt-3 mb-4;
+  }
+
+  h2 {
+    @apply text-2xl lg:text-3xl mt-3 mb-4;
+  }
+
+  h3 {
+    @apply text-xl lg:text-2xl  mt-3 mb-6 relative;
+    &::after {
+      content: "";
+      @apply absolute bottom-[-4px] left-0 w-full h-[1.5px]  rounded-sm bg-gradient-to-l from-[#6667FF] to-[#7FCBEE];
+    }
+  }
+
+  h4 {
+    @apply text-base lg:text-lg mt-3 mb-4;
+  }
+
+  h5 {
+    @apply text-base mt-3 mb-2;
+  }
+
+  h6 {
+    @apply text-sm mt-3 mb-2;
+  }
+
+  p {
+    @apply text-sm my-2 tracking-wider;
+  }
+
+  em {
+    background: linear-gradient(rgba(254, 254, 152, 0) 30%, #fefe98 90%);
+    font-weight: bold;
+  }
+  ol {
+    padding-left: 20px;
+  }
+
+  ul {
+    padding-left: 0;
+
+    li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 15px;
+      list-style-type: none;
+
+      &::before {
+        position: absolute;
+        content: "\e71b";
+        // font-family: $icon-font;
+        font-size: 14px;
+        left: 0;
+        top: 1px;
+        // color: $primary-color;
+        transition: 0.3s ease;
+      }
+    }
+  }
+
+  table {
+    text-align: left;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+
+    border: 1px solid #dee2e6;
+
+    th,
+    td {
+      padding: 0.75rem;
+      vertical-align: top;
+      border: 1px solid #dee2e6;
+    }
+
+    // thead {
+    //   // background: darken($color: $gray, $amount: 2);
+    // }
+
+    tbody {
+      // background: $gray;
+
+      td {
+        text-align: left !important;
+      }
+    }
+  }
+
+  blockquote {
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+    background: linear-gradient(transparent 0%, white);
+    // border: 4px solid $primary-color;
+    border-radius: 30px;
+  }
+
+  pre {
+    @apply pl-2 pr-4 py-2 my-2 relative ml-0 overflow-auto;
+    // code {
+    //   // @apply text-white bg-black  rounded-lg overflow-scroll w-full;
+    // }
+  }
+
+  a {
+    // color: $primary-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

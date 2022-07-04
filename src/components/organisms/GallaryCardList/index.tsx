@@ -30,8 +30,12 @@ export const GallraryCardList: React.VFC<Props> = ({ limit, offset = 0 }) => {
     );
   }
   return (
-    <div className="container px-4 mx-auto grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <>
       {gallaryList.map(({ title, description, postedDate, id, card, tags }) => {
+        const _tags =
+          tags?.map((tag) => {
+            return { slug: tag, name: tag };
+          }) || [];
         return (
           <Card
             key={id}
@@ -39,11 +43,11 @@ export const GallraryCardList: React.VFC<Props> = ({ limit, offset = 0 }) => {
             tagPosition={"flex"}
             img={card}
             subTitle={`Posted:${postedDate}`}
-            tags={tags}
+            tags={_tags}
             href={`/gallary/${id}`}
           />
         );
       })}
-    </div>
+    </>
   );
 };

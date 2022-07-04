@@ -18,17 +18,19 @@ export const Navbar: React.VFC = () => {
 
   return (
     <nav
-      className={!isHide ? "bg-gray-800 opacity-80  top-0 left-0 w-full" : ""}
+      className={
+        !isHide ? "bg-gray-800 opacity-80 z-[300] top-0 left-0 w-full" : ""
+      }
     >
       <div className="container px-3 py-4 mx-auto lg:flex lg:justify-between lg:items-center">
         <div className="lg:flex lg:items-center">
-          <div className="flex items-center justify-between">
+          <div className="flex  justify-between items-center">
             <Button
               btnType="link"
               href="/"
-              className="text-white text-5xl font-bold lg:text-6xl hover:text-gray-300"
+              className="text-white font-bold  hover:text-gray-300 mt-1"
             >
-              White
+              <img src={"/logo.png"} alt={"logo"} height={16.5} width={145} />
             </Button>
             <div className="flex lg:hidden">
               <Button aria-label="toggle menu" btnType="text" onClick={onClick}>

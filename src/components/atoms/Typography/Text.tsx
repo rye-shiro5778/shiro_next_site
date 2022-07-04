@@ -19,8 +19,8 @@ export const Text: React.VFC<Props<TextType>> = (props) => {
     case "link":
       const { type, className, size = "base", href, ...aProp } = props;
       return (
-        <Link className={applyClassName} href={href} {...aProp}>
-          {children}
+        <Link href={href} {...aProp}>
+          <span className={applyClassName}>{children}</span>
         </Link>
       );
   }

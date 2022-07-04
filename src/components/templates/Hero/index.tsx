@@ -1,5 +1,6 @@
-import { RandomBrush } from "@/art/p5/RandomWalk/RandomBrush";
-import { Title } from "@/components/atoms/Typography/Title";
+import { Rain } from "@/art/p5/FlaksFall/Rain";
+import { Induction } from "@/components/atoms/Others/Induction";
+import Image from "next/image";
 
 export const Hero: React.VFC = () => {
   //   const list = useMemo(
@@ -28,20 +29,29 @@ export const Hero: React.VFC = () => {
 
   return (
     <>
-      <div className={`h-[100vh]`}>
-        <RandomBrush
+      <div className={`h-[100vh] scale-x-[98%]`}>
+        <Rain key={2} cWidth={"windowWidth"} cHeight={"windowHeight"} />,
+        {/* <RandomBrush
           key={3}
           cWidth={"windowWidth"}
           cHeight={"windowHeight"}
           num={150}
           maxFrameCount={280}
-          color={{ r: 50, g: 256, b: 200 }}
-        />
-        <div className="absolute left-[50%] top-[50%]  w-full z-[100] translate-x-[-50%] translate-y-[-50%]">
-          <Title className="text-6xl text-white text-center">
-            Dive Into Creative ...
-          </Title>
+          color={{ r: 256, g: 256, b: 256 }}
+        /> */}
+        <div className="absolute left-[50%] top-[50%]  w-full z-[10] translate-x-[-50%] translate-y-[-50%]">
+          <div className="text-center mt-4">
+            <Image
+              src={"/logo2.png"}
+              alt={"main logo"}
+              width={298}
+              height={365}
+            />
+          </div>
         </div>
+      </div>
+      <div className="absolute bottom-0 left-[47%] mb-4">
+        <Induction />
       </div>
     </>
   );

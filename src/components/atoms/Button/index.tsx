@@ -32,11 +32,11 @@ export const Button: React.VFC<Props> = memo(
         break;
       case "link":
         additionalClassName += isOnlyText
-          ? "text-white hover:text-gray-400"
-          : "bg-white text-black px-2";
+          ? "text-white hover:text-gray-500"
+          : "px-2 bg-white text-black";
 
       case "text":
-        additionalClassName += "text-white hover:text-gray-400";
+        additionalClassName += "text-white hover:text-gray-500";
         break;
     }
 
@@ -54,7 +54,9 @@ export const Button: React.VFC<Props> = memo(
 
     return btnType === "link" ? (
       <Link href={href || ""} target={target || "_self"}>
-        <Button />
+        <a>
+          <Button />
+        </a>
       </Link>
     ) : (
       <Button />

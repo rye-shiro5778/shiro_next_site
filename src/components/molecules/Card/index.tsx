@@ -1,11 +1,9 @@
-import { Loading } from "@/components/atoms/Others/Loading";
-import { Tag } from "@/components/atoms/Tag";
-import { ErrorBoundary } from "@/components/ErrorBoundary";
 import Link from "next/link";
 import { useMemo } from "react";
+import { TagGroup } from "../TagGroup";
 
 type Props = {
-  tags?: string[];
+  tags?: { slug: string; name: string }[];
   tagPosition?: "flex" | "block";
   img: JSX.Element;
   title: JSX.Element | string;
@@ -26,40 +24,22 @@ export const Card: React.VFC<Props> = ({
 }) => {
   const tagContent = useMemo(() => {
     if (!tags) return;
-    return (
-      <div className="pr-2 pt-1 pb-1">
-        {tags.map((tag) => (
-          <Tag key={tag} size={"sm"}>
-            {tag}
-          </Tag>
-        ))}
-      </div>
-    );
+    return <TagGroup tags={tags} />;
   }, [tags]);
 
   const cardContent = useMemo(() => {
     return (
       <>
-        <div className="w-full">
-          <ErrorBoundary
-            fallback={
-              <div className="w-full h-[250px] bg-slate-800">
-                <Loading />
-              </div>
-            }
-          >
-            {img}
-          </ErrorBoundary>
-        </div>
+        <div className="w-full">{img}</div>
         <div className="ml-4 mr-2 my-2">
           <p className={"font-bold text-gray-700 text-base"}>{title}</p>
           <div className="flex justify-between content-center">
             {subTitle && (
-              <p className={"text-gray-400 py-1 pl-2"}>{subTitle}</p>
+              <p className={"text-gray-400 py-1 pl-1"}>{subTitle}</p>
             )}
             {tagPosition === "flex" && tagContent}
           </div>
-          {tagPosition === "block" && <div className="">{tagContent}</div>}
+          {tagPosition === "block" && tagContent}
         </div>
       </>
     );
@@ -67,7 +47,7 @@ export const Card: React.VFC<Props> = ({
 
   return (
     <div
-      className="max-w-sm rounded overflow-hidden bg-white border-[0.5px] border-opacity-50 border-black hover:shadow-lg hover:shadow-black"
+      className="max-w-sm rounded overflow-hidden bg-white border-[0.5px] border-opacity-50  ransition duration-300 border-black hover:shadow-lg hover:shadow-black hover:opacity-95 hover:-translate-y-1"
       {...props}
     >
       {href ? (

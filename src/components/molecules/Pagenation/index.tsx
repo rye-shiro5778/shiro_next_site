@@ -1,20 +1,23 @@
 import { Button } from "@/components/atoms/Button";
+import { makeRange } from "@/utils/makeRange";
+import React from "react";
 
-export const Pagination = ({
-  perPage = 1,
-  totalCount,
-  pageRoot,
-}: {
+type Props = {
   perPage?: number;
   totalCount: number;
   pageRoot: string;
-}) => {
-  const range = (start: number, end: number) =>
-    [...Array(end - start + 1)].map((_, i) => start + i);
+};
+
+export const Pagenation: React.VFC<Props> = ({
+  perPage = 8,
+  totalCount,
+  pageRoot,
+}: Props) => {
+  const range: number[] = makeRange(1, Math.ceil(totalCount / perPage));
 
   return (
     <ul className="flex text-center mt-6 justify-center">
-      {range(1, Math.ceil(totalCount / perPage)).map((number, index, page) => {
+      {range.map((number, index) => {
         // if (page.length > 5 && index < page.length - 2 && index > 1) {
         //   return <span>...</span>;
         // }
@@ -23,7 +26,7 @@ export const Pagination = ({
             <Button
               btnType="link"
               href={pageRoot + number}
-              className={"bg-gray-700 p-3"}
+              className={"bg-gray-700 hover:bg-gray-600 p-3"}
             >
               {String(number)}
             </Button>

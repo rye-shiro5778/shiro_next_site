@@ -1,5 +1,5 @@
-import { Navbar } from "@/components/templates/Header";
-import { Footer } from "../Footer";
+import { Navbar } from "@/components/templates/Layouts/Header";
+import { Footer } from "./Footer";
 
 type Props = {
   children: JSX.Element;
@@ -16,12 +16,12 @@ export default function Layout({
     <>
       <div
         className={
-          isHeaderOverlay
-            ? "absolute top-0 left-0 w-[100%] z-[100] pt-1"
-            : "pt-2"
+          isHeaderOverlay ? "absolute top-0 left-0 w-[100%] z-[100]" : "pt-2"
         }
       >
-        <Navbar />
+        <div className={isHeaderOverlay ? "mt-2" : ""}>
+          <Navbar />
+        </div>
       </div>
       {children}
       <div

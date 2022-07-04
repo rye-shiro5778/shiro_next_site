@@ -40,6 +40,15 @@ Link.args = {
   target: "_blank",
 };
 
+export const Link2 = Template.bind({});
+Link2.args = {
+  children: "Button",
+  btnType: "link",
+  href: "https://github.com",
+  target: "_blank",
+  isOnlyText: false,
+};
+
 export const IconOnly = Template.bind({});
 IconOnly.args = {
   children: <FaGithub />,
