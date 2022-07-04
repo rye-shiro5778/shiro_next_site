@@ -1,4 +1,5 @@
 import aspida from "@aspida/fetch";
+import fetch from "node-fetch";
 import api from "../api/$api";
 
 const config = {
@@ -7,5 +8,13 @@ const config = {
   },
   baseURL: process.env.CMS_SERVICE_DOMAIN || "",
 };
-
-export const client = api(aspida(fetch, config));
+// unction fetch(input: RequestInfo | URL, init?: RequestInit | undefined): Promise<Response>
+export const client = api(
+  aspida(
+    fetch as unknown as (
+      input: RequestInfo | URL,
+      init?: RequestInit | undefined
+    ) => Promise<Response>,
+    config
+  )
+);

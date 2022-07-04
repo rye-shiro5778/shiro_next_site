@@ -1,6 +1,18 @@
 [
-    "フロントエンド",
-    "バックエンド",
-    "Git",
-    "その他"
+    {
+        "slug": "frontend",
+        "name": "フロントエンド"
+    },
+    {
+        "slug": "backend",
+        "name": "バックエンド"
+    },
+    {
+        "slug": "git",
+        "name": "Git"
+    },
+    {
+        "slug": "other",
+        "name": "その他"
+    }
 ]

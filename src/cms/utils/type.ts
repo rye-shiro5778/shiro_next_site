@@ -2,6 +2,7 @@
  * microCMS 自分で定義したschema
  */
 export type Blog = {
+  slug: string;
   title: string;
   description?: string;
   content: string;
@@ -12,10 +13,12 @@ export type Blog = {
 };
 
 export type Category = {
+  slug: string;
   name: string;
 };
 
 export type Tag = {
+  slug: string;
   name: string;
 };
 

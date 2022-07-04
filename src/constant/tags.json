@@ -1,8 +1,26 @@
 [
-    "TypeScript",
-    "React",
-    "AWS",
-    "Github",
-    "Git",
-    "logicool"
+    {
+        "slug": "typescript",
+        "name": "TypeScript"
+    },
+    {
+        "slug": "react",
+        "name": "React"
+    },
+    {
+        "slug": "aws",
+        "name": "AWS"
+    },
+    {
+        "slug": "github",
+        "name": "Github"
+    },
+    {
+        "slug": "git",
+        "name": "Git"
+    },
+    {
+        "slug": "logicool",
+        "name": "logicool"
+    }
 ]

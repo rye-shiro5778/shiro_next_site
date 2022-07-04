@@ -1,12 +1,18 @@
 import { writeFile } from "fs/promises";
 import { client } from "./cmsClient";
-import { Category, MicroCMSContentId, MicroCMSDate, Tag } from "./type";
+import { Category, MicroCMSListResponse, Tag } from "./type";
 
 async function makeCategoryJson() {
   try {
-    const categories = await client.categories.$get();
+    const categories: MicroCMSListResponse<Category> =
+      await client.categories.$get();
     const data = categories.contents.map(
-      (category: Category & MicroCMSContentId & MicroCMSDate) => category.name
+      ({ slug, name }: { slug: string; name: string }) => {
+        return {
+          slug,
+          name,
+        };
+      }
     );
     const reverse = data.reverse();
     await writeFile(
@@ -21,9 +27,14 @@ async function makeCategoryJson() {
 
 async function makeTagJson() {
   try {
-    const tags = await client.tags.$get();
+    const tags: MicroCMSListResponse<Tag> = await client.tags.$get();
     const data = tags.contents.map(
-      (tag: Tag & MicroCMSContentId & MicroCMSDate) => tag.name
+      ({ slug, name }: { slug: string; name: string }) => {
+        return {
+          slug,
+          name,
+        };
+      }
     );
     const reverse = data.reverse();
     await writeFile(
