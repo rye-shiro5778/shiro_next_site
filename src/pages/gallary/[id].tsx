@@ -1,6 +1,7 @@
 import { gallraryList } from "@/art/gallary";
 import { Tag } from "@/components/atoms/Tag";
 import { Text } from "@/components/atoms/Typography";
+import { Head } from "@/components/templates/Head";
 import Layout from "@/components/templates/Layouts";
 import type { GetStaticPaths, GetStaticProps, NextPageWithLayout } from "next";
 
@@ -11,6 +12,7 @@ const Page: NextPageWithLayout<Props> = ({ id }) => {
     gallraryList[id];
   return (
     <>
+      <Head title={title} description={description} />
       <div className={`h-[100vh] w-[100%] relative`}>
         <div>{sketch}</div>
         <div

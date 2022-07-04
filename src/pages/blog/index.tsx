@@ -1,6 +1,7 @@
 import { client } from "@/cms/utils/cmsClient";
 import { Blog, MicroCMSContentId, MicroCMSDate } from "@/cms/utils/type";
 import { BlogListPage } from "@/components/templates/BlogList";
+import { Head } from "@/components/templates/Head";
 import BlogLayout from "@/components/templates/Layouts/BlogLayout";
 import type { GetStaticProps, NextPageWithLayout } from "next";
 
@@ -12,7 +13,12 @@ type Props = {
 };
 
 const Page: NextPageWithLayout<Props> = (props) => {
-  return <BlogListPage {...props} />;
+  return (
+    <>
+      <Head />
+      <BlogListPage {...props} />
+    </>
+  );
 };
 
 Page.getLayout = (page) => <BlogLayout>{page}</BlogLayout>;

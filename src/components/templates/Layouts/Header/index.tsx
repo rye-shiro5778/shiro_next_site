@@ -10,11 +10,7 @@ export const Navbar: React.VFC = () => {
   const [isHide, setIsHide] = useState(true);
   const onClick = useCallback(() => setIsHide(!isHide), [isHide, setIsHide]);
 
-  useEffect(() => {
-    if (width > 1024) {
-      setIsHide(true);
-    }
-  }, [width]);
+  useEffect(() => setIsHide(true), [width]);
 
   return (
     <nav
