@@ -1,20 +1,13 @@
 import { gallraryList } from "@/art/gallary";
 import { Title } from "@/components/atoms/Typography/Title";
 import { Pagenation } from "@/components/molecules/Pagenation";
+import GallraryCardList from "@/components/organisms/GallaryCardList";
 import { Head } from "@/components/templates/Head";
 import Layout from "@/components/templates/Layouts";
 import type { NextPageWithLayout } from "next";
-import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 
 type Props = {};
-
-const GallraryCardList = dynamic(
-  () => import("@/components/organisms/GallaryCardList"),
-  {
-    ssr: false,
-  }
-);
 
 const Page: NextPageWithLayout<Props> = ({}) => {
   const perPage: number = 8;

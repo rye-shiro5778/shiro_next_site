@@ -1,5 +1,16 @@
-import { Rain } from "@/art/p5/FlaksFall/Rain";
 import { Induction } from "@/components/atoms/Others/Induction";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+
+const Rain = dynamic(
+  async () => {
+    const { Rain } = await import("@/art/p5/FlaksFall/Rain");
+    return Rain;
+  },
+  {
+    ssr: false,
+  }
+);
 
 const Hero: React.VFC = () => {
   //   const list = useMemo(
@@ -29,15 +40,9 @@ const Hero: React.VFC = () => {
   return (
     <>
       <div className={`h-[100vh] scale-x-[98%]`}>
-        <Rain key={2} cWidth={"windowWidth"} cHeight={"windowHeight"} />,
-        {/* <RandomBrush
-          key={3}
-          cWidth={"windowWidth"}
-          cHeight={"windowHeight"}
-          num={150}
-          maxFrameCount={280}
-          color={{ r: 256, g: 256, b: 256 }}
-        /> */}
+        <Suspense fallback={<></>}>
+          <Rain key={2} cWidth={"windowWidth"} cHeight={"windowHeight"} />,
+        </Suspense>
         <div className="absolute left-[50%] top-[50%]  w-full z-[10] translate-x-[-50%] translate-y-[-50%]">
           <img
             src={"/logo2.png"}
