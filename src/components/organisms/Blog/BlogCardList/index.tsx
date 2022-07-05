@@ -1,4 +1,5 @@
 import { Blog, MicroCMSContentId, MicroCMSDate } from "@/cms/utils/type";
+import { MicroCmsImage } from "@/components/atoms/Image";
 import { Text } from "@/components/atoms/Typography/Text";
 import { Card } from "@/components/molecules/Card";
 import dayjs from "dayjs";
@@ -16,16 +17,6 @@ export const BlogCardList: React.VFC<Props> = ({ blogs }) => {
     <>
       {blogs.map(({ title, publishedAt, eyecatch, tags, slug }) => {
         const publishedDate = dayjs(publishedAt).format("YYYY-MM-DD");
-        const img = eyecatch?.url ? (
-          <img
-            alt={title}
-            src={eyecatch.url + "?w=400&h=250"}
-            width={400}
-            height={250}
-          />
-        ) : (
-          <></>
-        );
 
         return (
           <Card
@@ -38,7 +29,14 @@ export const BlogCardList: React.VFC<Props> = ({ blogs }) => {
               </div>
             }
             tagPosition={"block"}
-            img={img}
+            img={
+              <MicroCmsImage
+                imgUrl={eyecatch?.url}
+                alt={title}
+                width={400}
+                height={250}
+              />
+            }
             tags={tags}
             href={`/blog/${slug}`}
           />
