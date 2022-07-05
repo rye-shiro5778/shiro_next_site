@@ -1,6 +1,5 @@
 import { Induction } from "@/components/atoms/Others/Induction";
 import dynamic from "next/dynamic";
-import { Suspense } from "react";
 
 const Rain = dynamic(
   async () => {
@@ -9,6 +8,7 @@ const Rain = dynamic(
   },
   {
     ssr: false,
+    loading: () => <></>,
   }
 );
 
@@ -40,9 +40,7 @@ const Hero: React.VFC = () => {
   return (
     <>
       <div className={`h-[100vh] scale-x-[98%]`}>
-        <Suspense fallback={<></>}>
-          <Rain key={2} cWidth={"windowWidth"} cHeight={"windowHeight"} />,
-        </Suspense>
+        <Rain key={2} cWidth={"windowWidth"} cHeight={"windowHeight"} />
         <div className="absolute left-[50%] top-[50%]  w-full z-[10] translate-x-[-50%] translate-y-[-50%]">
           <img
             src={"/logo2.png"}
