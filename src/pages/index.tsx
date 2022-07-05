@@ -3,15 +3,25 @@ import { Blog, MicroCMSContentId, MicroCMSDate } from "@/cms/utils/type";
 import { Button } from "@/components/atoms/Button";
 import { Title } from "@/components/atoms/Typography/Title";
 import { BlogCardList } from "@/components/organisms/Blog/BlogCardList";
-import { GallraryCardList } from "@/components/organisms/GallaryCardList";
 import { Head } from "@/components/templates/Head";
-import { Hero } from "@/components/templates/Hero";
 import Layout from "@/components/templates/Layouts";
 import type { GetStaticProps, NextPageWithLayout } from "next";
+import dynamic from "next/dynamic";
 
 type Props = {
   blogs: (Blog & MicroCMSContentId & MicroCMSDate)[];
 };
+
+const Hero = dynamic(() => import("@/components/templates/Hero"), {
+  ssr: false,
+});
+
+const GallraryCardList = dynamic(
+  () => import("@/components/organisms/GallaryCardList"),
+  {
+    ssr: false,
+  }
+);
 
 const Home: NextPageWithLayout<Props> = ({ blogs }) => {
   const menu = [

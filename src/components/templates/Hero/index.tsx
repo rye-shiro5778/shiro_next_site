@@ -1,7 +1,7 @@
 import { Rain } from "@/art/p5/FlaksFall/Rain";
 import { Induction } from "@/components/atoms/Others/Induction";
 
-export const Hero: React.VFC = () => {
+const Hero: React.VFC = () => {
   //   const list = useMemo(
   //     () => [
   //       <SnowFall key={1} cWidth={"windowWidth"} cHeight={"windowHeight"} />,
@@ -54,3 +54,5 @@ export const Hero: React.VFC = () => {
     </>
   );
 };
+
+export default Hero;

@@ -9,7 +9,7 @@ type Props = {
   limit?: number;
 };
 
-export const GallraryCardList: React.VFC<Props> = ({ limit, offset = 0 }) => {
+const GallraryCardList: React.VFC<Props> = ({ limit, offset = 0 }) => {
   const gallaryList = useMemo(
     () =>
       getGallraryList({
@@ -51,3 +51,5 @@ export const GallraryCardList: React.VFC<Props> = ({ limit, offset = 0 }) => {
     </>
   );
 };
+
+export default GallraryCardList;
