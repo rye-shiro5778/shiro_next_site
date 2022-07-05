@@ -17,7 +17,12 @@ export const BlogCardList: React.VFC<Props> = ({ blogs }) => {
       {blogs.map(({ title, publishedAt, eyecatch, tags, slug }) => {
         const publishedDate = dayjs(publishedAt).format("YYYY-MM-DD");
         const img = eyecatch?.url ? (
-          <img alt={title} src={eyecatch.url} width={400} height={250} />
+          <img
+            alt={title}
+            src={eyecatch.url + "?w=400&h=250"}
+            width={400}
+            height={250}
+          />
         ) : (
           <></>
         );

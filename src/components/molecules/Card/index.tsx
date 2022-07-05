@@ -35,7 +35,7 @@ export const Card: React.VFC<Props> = ({
           <p className={"font-bold text-gray-700 text-base"}>{title}</p>
           <div className="flex justify-between content-center">
             {subTitle && (
-              <p className={"text-gray-400 py-1 pl-1"}>{subTitle}</p>
+              <p className={"text-gray-500 py-1 pl-1"}>{subTitle}</p>
             )}
             {tagPosition === "flex" && tagContent}
           </div>

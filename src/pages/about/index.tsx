@@ -42,13 +42,20 @@ const About: NextPageWithLayout = () => {
             <div className="mt-8 lg:mt-0 lg:w-1/2">
               <div className="flex items-center justify-center lg:justify-end">
                 <div className="max-w-lg mx-10">
-                  <img
-                    alt=""
-                    className="object-cover object-center w-full h-64 rounded-xl shadow"
-                    src="/profile.png"
-                    width={256}
-                    height={256}
-                  />
+                  <picture>
+                    <source
+                      srcSet="/profile.webp"
+                      type="image/webp"
+                      className="object-cover object-center w-full h-64 rounded-xl shadow"
+                    />
+                    <img
+                      src="/profile.png"
+                      alt="profile"
+                      width={256}
+                      height={256}
+                      className="object-cover object-center w-full h-64 rounded-xl shadow"
+                    />
+                  </picture>
                 </div>
               </div>
             </div>

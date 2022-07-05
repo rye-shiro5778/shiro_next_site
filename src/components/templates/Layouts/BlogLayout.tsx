@@ -32,13 +32,20 @@ export default function BlogLayout({
         <div className="container mx-auto mt-3 ml-4 sm:ml-1 col-span-1">
           <section className="max-w-md px-4 py-2 mx-auto mt-20 rounded-xl shadow-lg border border-white">
             <div className="flex justify-center -mt-14 md:justify-end">
-              <img
-                alt=""
-                className="object-cover object-center w-[120px] h-[120px] rounded-xl"
-                src="/profile.png"
-                width={120}
-                height={120}
-              />
+              <picture>
+                <source
+                  srcSet="/profile.webp"
+                  type="image/webp"
+                  className="object-cover object-center w-[120px] h-[120px] rounded-xl"
+                />
+                <img
+                  src="/profile.png"
+                  alt="profile"
+                  width={120}
+                  height={256}
+                  className="object-cover object-center w-[120px] h-[120px] rounded-xl"
+                />
+              </picture>
             </div>
             <div className="flex items-center -mt-4">
               <Title level={4} className="ml-2 ">

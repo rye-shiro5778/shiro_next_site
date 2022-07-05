@@ -54,9 +54,7 @@ export const Button: React.VFC<Props> = memo(
 
     return btnType === "link" ? (
       <Link href={href || ""} target={target || "_self"}>
-        <a>
-          <Button />
-        </a>
+        <Button />
       </Link>
     ) : (
       <Button />

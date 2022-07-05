@@ -13,6 +13,7 @@ const MyDocument = () => {
           href="https://fonts.googleapis.com/css2?family=Homenaje&display=swap"
           rel="stylesheet"
         />
+        <link rel="canonical" href="https://www.white-tech.net" />
       </Head>
       <body className="bg-slate-800">
         <Main />

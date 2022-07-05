@@ -26,7 +26,16 @@ export const Navbar: React.VFC = () => {
               href="/"
               className="text-white font-bold  hover:text-gray-300 mt-1"
             >
-              <img src={"/logo.png"} alt={"logo"} height={16.5} width={145} />
+              <picture>
+                <source
+                  srcSet="/logo.png"
+                  type="image/webp"
+                  height={16.5}
+                  width={145}
+                />
+
+                <img src={"/logo.png"} alt={"logo"} height={16.5} width={145} />
+              </picture>
             </Button>
             <div className="flex lg:hidden">
               <Button aria-label="toggle menu" btnType="text" onClick={onClick}>

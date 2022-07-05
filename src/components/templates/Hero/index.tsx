@@ -42,13 +42,22 @@ const Hero: React.VFC = () => {
       <div className={`h-[100vh] scale-x-[98%]`}>
         <Rain key={2} cWidth={"windowWidth"} cHeight={"windowHeight"} />
         <div className="absolute left-[50%] top-[50%]  w-full z-[10] translate-x-[-50%] translate-y-[-50%]">
-          <img
-            src={"/logo2.png"}
-            alt={"main logo"}
-            width={298}
-            height={365}
-            className="mx-auto"
-          />
+          <picture>
+            <source
+              srcSet="/logo2.png"
+              className="mx-auto"
+              type="image/webp"
+              width={256}
+              height={256}
+            />
+            <img
+              src="/logo2.png"
+              alt="logo"
+              width={256}
+              height={256}
+              className="mx-auto"
+            />
+          </picture>
         </div>
       </div>
       <div className="absolute bottom-0 left-[47%] mb-4">
