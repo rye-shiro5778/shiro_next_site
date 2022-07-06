@@ -1,5 +1,5 @@
+import styles from "@/styles/content.module.scss";
 import React, { memo } from "react";
-import styles from "./content.module.scss";
 type Props = {
   content: string;
 };

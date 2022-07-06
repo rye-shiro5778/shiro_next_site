@@ -1,7 +1,7 @@
 import { Blog, MicroCMSContentId, MicroCMSDate } from "@/cms/utils/type";
 import { Title } from "@/components/atoms/Typography/Title";
 import { Pagenation } from "@/components/molecules/Pagenation";
-import { BlogCardList } from "@/components/organisms/Blog/BlogCardList";
+import { BlogCardList } from "@/components/organisms/Blog/CardList";
 import React, { memo } from "react";
 
 type Props = {

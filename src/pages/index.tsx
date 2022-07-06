@@ -2,7 +2,7 @@ import { client } from "@/cms/utils/cmsClient";
 import { Blog, MicroCMSContentId, MicroCMSDate } from "@/cms/utils/type";
 import { Button } from "@/components/atoms/Button";
 import { Title } from "@/components/atoms/Typography/Title";
-import { BlogCardList } from "@/components/organisms/Blog/BlogCardList";
+import { BlogCardList } from "@/components/organisms/Blog/CardList";
 import GallraryCardList from "@/components/organisms/GallaryCardList";
 import { Head } from "@/components/templates/Head";
 import Hero from "@/components/templates/Hero";

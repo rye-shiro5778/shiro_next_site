@@ -1,9 +1,9 @@
 import { Blog as BlogType, MicroCMSDate } from "@/cms/utils/type";
 import dayjs from "dayjs";
 import React, { memo } from "react";
-import { Content } from "../../organisms/Blog/BlogContent";
-import { Head } from "./Head";
-import { MetaInfo } from "./MetaInfo";
+import { Content } from "../../atoms/Blog/Content";
+import { Head } from "../../organisms/Blog/Head";
+import { MetaInfo } from "../../organisms/Blog/MetaInfo";
 type Props = { blog: BlogType & MicroCMSDate };
 
 export const Article: React.VFC<Props> = memo(({ blog }: Props) => {

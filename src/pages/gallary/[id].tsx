@@ -16,7 +16,7 @@ const Page: NextPageWithLayout<Props> = ({ id }) => {
       <div className={`h-[100vh] w-[100%] relative`}>
         <div>{sketch}</div>
         <div
-          className={`absolute  bottom-8 px-4 w-[100%] z-[100] mt-2 opacity-60`}
+          className={`absolute  bottom-8 px-4 w-[100%] z-[100] mt-2 opacity-80`}
         >
           <div className="container mx-auto">
             <div className="flex items-baseline">
