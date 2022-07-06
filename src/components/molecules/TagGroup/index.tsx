@@ -26,7 +26,7 @@ export const TagGroup: React.VFC<Props> = ({
             key={tag.slug}
             className={!isFlex ? "mb-2" : ""}
             size={size}
-            href={isLink ? `/tag/${tag.slug}/page/1` : undefined}
+            href={isLink ? `/blog/tag/${tag.slug}/page/1` : undefined}
           >
             {tag.name}
           </Tag>

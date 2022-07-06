@@ -8,10 +8,6 @@
         "name": "React"
     },
     {
-        "slug": "aws",
-        "name": "AWS"
-    },
-    {
         "slug": "github",
         "name": "Github"
     },
@@ -22,5 +18,9 @@
     {
         "slug": "logicool",
         "name": "logicool"
+    },
+    {
+        "slug": " vscode",
+        "name": "VSCode"
     }
 ]

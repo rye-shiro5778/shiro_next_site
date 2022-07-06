@@ -7,6 +7,7 @@ import GallraryCardList from "@/components/organisms/GallaryCardList";
 import { Head } from "@/components/templates/Head";
 import Hero from "@/components/templates/Hero";
 import Layout from "@/components/templates/Layouts";
+import { makeTagCategoryJson } from "@/utils/makeTagCategoryJson";
 import type { GetStaticProps, NextPageWithLayout } from "next";
 
 type Props = {
@@ -65,6 +66,8 @@ Home.getLayout = (page) => <Layout isHeaderOverlay={true}>{page}</Layout>;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const blogs = await client.blogs.$get({ query: { limit: 4 } });
+
+  await makeTagCategoryJson();
 
   return {
     props: {
