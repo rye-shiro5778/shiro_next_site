@@ -1,9 +1,30 @@
-import { Circle } from "@/art/p5/RandomCircle";
 import { GallraryList } from "@/utils/types/gallary";
-import { Rain } from "./p5/FlaksFall/Rain";
-import { SnowFall } from "./p5/FlaksFall/SnowFall";
-import { RandomBrush } from "./p5/RandomWalk/RandomBrush";
-import { TimerCircle1 } from "./p5/TimerCircle";
+import dynamic from "next/dynamic";
+
+const Circle = dynamic(async () => {
+  const { Circle } = await import("@/art/p5/RandomCircle");
+  return Circle;
+});
+
+const TimerCircle1 = dynamic(async () => {
+  const { TimerCircle1 } = await import("@/art/p5/TimerCircle");
+  return TimerCircle1;
+});
+
+const RandomBrush = dynamic(async () => {
+  const { RandomBrush } = await import("@/art/p5/RandomWalk/RandomBrush");
+  return RandomBrush;
+});
+
+const SnowFall = dynamic(async () => {
+  const { SnowFall } = await import("@/art/p5/FlaksFall/SnowFall");
+  return SnowFall;
+});
+
+const Rain = dynamic(async () => {
+  const { Rain } = await import("@/art/p5/FlaksFall/Rain");
+  return Rain;
+});
 
 export const gallraryList: GallraryList = {
   randomcircle1: {
