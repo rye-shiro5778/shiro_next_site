@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
+    "build": "next build && next export && next-sitemap --config sitemap.config.js",
     "start": "next start",
     "lint": "next lint  --fix",
     "storybook": "cross-env STORYBOOK=TRUE start-storybook -p 6006 -s ./.storybook/img",
@@ -59,6 +59,7 @@
     "eslint-plugin-storybook": "^0.5.12",
     "gh-pages": "^4.0.0",
     "microcms-typescript": "^1.0.11",
+    "next-sitemap": "^3.1.10",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "sass-loader": "^10.2.1",
