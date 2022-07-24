@@ -51,7 +51,12 @@ const Home: NextPageWithLayout<Props> = ({ blogs }) => {
             {children}
 
             <div className="flex justify-end ">
-              <Button btnType="link" size="lg" href={href} className="mr-3">
+              <Button
+                btnType="link"
+                size="lg"
+                href={href}
+                className="mr-3 mt-2"
+              >
                 See More...
               </Button>
             </div>
