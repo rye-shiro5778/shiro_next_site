@@ -1,5 +1,6 @@
 import { GallraryList } from "@/utils/types/gallary";
 import dynamic from "next/dynamic";
+import { Galaxy } from "./three/Particle/Galaxy";
 
 const Circle = dynamic(async () => {
   const { Circle } = await import("@/art/p5/RandomCircle");
@@ -90,5 +91,16 @@ export const gallraryList: GallraryList = {
     updatedDate: "2022-0625",
     ogp: undefined,
     tags: ["p5js", "TypeScript"],
+  },
+  galaxy: {
+    id: "galaxy",
+    title: "Galaxy",
+    description: "Three.jsによるパーティクル",
+    sketch: <Galaxy cWidth={"windowWidth"} cHeight={"windowHeight"} />,
+    card: <Galaxy cWidth={400} cHeight={250} />,
+    postedDate: "2022-0725",
+    updatedDate: "2022-0725",
+    ogp: undefined,
+    tags: ["threejs", "TypeScript"],
   },
 };

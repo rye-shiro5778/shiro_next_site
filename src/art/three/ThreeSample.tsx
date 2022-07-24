@@ -1,128 +1,73 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import {
-  WebGLRenderer,
-  Scene,
-  PerspectiveCamera,
-  Object3D,
-  Fog,
   DirectionalLight,
-  AmbientLight,
-  SphereBufferGeometry,
-  MeshPhongMaterial,
   Mesh,
+  MeshStandardMaterial,
+  PerspectiveCamera,
+  Scene,
+  SphereGeometry,
+  WebGLRenderer,
 } from "three";
-import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
-import { GlitchPass } from "three/examples/jsm/postprocessing/GlitchPass";
-import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 
+export const ThreeSample: React.FC = () => {
+  const mountRef = useRef<HTMLDivElement>(null);
 
-interface ParamsAnimate {
-  object: THREE.Object3D;
-  composer: EffectComposer;
-}
+  useEffect(() => {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const element = mountRef.current;
 
-const Canvas: React.FC = () => {
-  const onCanvasLoaded = (canvas: HTMLCanvasElement) => {
-    if (!canvas) {
+    if (!element) {
       return;
     }
 
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-
-    // init scene
+    // シーン
     const scene = new Scene();
-    const camera = new PerspectiveCamera(
-      75,
-      canvas.clientWidth / canvas.clientHeight,
-      0.1,
-      1000
-    );
-    
-    camera.position.z = 240;
 
-    // init renderer
-    const renderer = new WebGLRenderer({ canvas: canvas, antialias: true });
-    renderer.setClearColor("#1d1d1d");
+    //　レンダラーの設定
+    const renderer = new WebGLRenderer();
+    renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(width, height);
+    element.appendChild(renderer.domElement);
 
-    // init object
-    const object = new Object3D();
-    scene.add(object);
+    // カメラ
+    const camera = new PerspectiveCamera(45, width / height, 1, 10000);
+    camera.position.set(0, 0, 1000);
 
-    // add fog
-    scene.fog = new Fog(0xffffff, 1, 1000);
+    // geometory
+    const geometry = new SphereGeometry(300, 30, 30);
+    const material = new MeshStandardMaterial({ color: 0xff0000 });
 
-    // add light
-    const spotLight = new DirectionalLight(0xffffff);
-    spotLight.position.set(1, 1, 1);
-    scene.add(spotLight);
-    const ambientLight = new AmbientLight(0x222222);
-    scene.add(ambientLight);
+    const mesh = new Mesh(geometry, material);
+    scene.add(mesh);
 
-    // add object
-    const geometry = new SphereBufferGeometry(2, 3, 4);
-    for (let i = 0; i < 100; i++) {
-      const material = new MeshPhongMaterial({
-        color: 0x000000,
-        flatShading: true,
-      });
-      const mesh = new Mesh(geometry, material);
-      mesh.position
-        .set(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.1)
-        .normalize();
-      mesh.position.multiplyScalar(Math.random() * 400);
-      mesh.rotation.set(
-        Math.random() * 2,
-        Math.random() * 2,
-        Math.random() * 2
-      );
-      mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 50;
-      object.add(mesh);
+    const directionalLight = new DirectionalLight(0xffffff);
+    directionalLight.position.set(1, 1, 1);
+    scene.add(directionalLight);
+
+    function tick() {
+      mesh.rotation.y += 0.01;
+      renderer.render(scene, camera);
+
+      requestAnimationFrame(tick);
     }
 
-    // add postprocessing
-    const composer = new EffectComposer(renderer);
-    const renderPass = new RenderPass(scene, camera);
-    composer.addPass(renderPass);
+    window.addEventListener("resize", handleResize);
+    tick();
 
-    const effectGlitch = new GlitchPass(64);
-    // true => exstreme
-    effectGlitch.goWild = false;
-    effectGlitch.renderToScreen = true;
-    composer.addPass(effectGlitch);
+    function handleResize() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    }
 
-    // resize
-    window.addEventListener("resize", () => handleResize({ camera, renderer }));
+    return () => {
+      element.removeChild(renderer.domElement);
+      window.removeEventListener("resize", () => handleResize);
+    };
+  }, []);
 
-    animate({ object, composer });
-  };
-
-  // handle resize
-  const handleResize = ({ camera, renderer }: any) => {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    camera.aspect = width / width;
-    camera.updateProjectionMatrix();
-    renderer.setSize(width, width);
-  };
-  useEffect(() => {
-    return () => window.removeEventListener("resize", () => handleResize);
-  });
-
-  // animation
-  const animate = ({ object, composer }: ParamsAnimate) => {
-    window.requestAnimationFrame(() => animate({ object, composer }));
-    object.rotation.x += 0.01;
-    object.rotation.z += 0.01;
-    composer.render();
-  };
-
-  return (
-    <div className="WrapCanvas">
-      <canvas className="Canvas" ref={onCanvasLoaded} />
-    </div>
-  );
+  return <div ref={mountRef} />;
 };
-
-export default Canvas;
