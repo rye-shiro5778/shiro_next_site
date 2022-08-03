@@ -1,7 +1,7 @@
 import { gallraryList } from "@/art/gallary";
 import { Tag } from "@/components/atoms/Tag";
 import { Text } from "@/components/atoms/Typography";
-import { Head } from "@/components/templates/Head";
+import { Head } from "@/components/organisms/Head";
 import Layout from "@/components/templates/Layouts";
 import type { GetStaticPaths, GetStaticProps, NextPageWithLayout } from "next";
 
