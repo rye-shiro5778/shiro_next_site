@@ -57,6 +57,7 @@ export const Bound: React.VFC<Props> = ({
 
   const draw = (p5: p5Types) => {
     p5.clear();
+    p5.frameRate(50);
     p5.background(p5.color("#1e293b"));
     const { width, height } = p5CanvasSize({ p5, cWidth, cHeight });
     balls.forEach(({ position, speed, color, size = 30 }, index) => {

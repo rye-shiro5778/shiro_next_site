@@ -126,7 +126,7 @@ export const gallraryList: GallraryList = {
     postedDate: "2022-0730",
     updatedDate: "2022-0730",
     ogp: undefined,
-    tags: ["Threejs", "Blender", "TypeScript"],
+    tags: ["Threejs", "Blender"],
   },
   boundball: {
     id: "boundball",
