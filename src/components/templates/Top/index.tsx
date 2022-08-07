@@ -4,17 +4,13 @@ import { BlogCardList } from "@/components/organisms/Blog/CardList";
 import GallraryCardList from "@/components/organisms/GallaryCardList";
 import { Head } from "@/components/organisms/Head";
 import Hero from "@/components/organisms/Hero";
-import Layout from "@/components/templates/Layouts";
-import { client } from "@/utils/cmsClient";
-import { makeTagCategoryJson } from "@/utils/makeTagCategoryJson";
 import { Blog, MicroCMSContentId, MicroCMSDate } from "@/utils/types/blogs";
-import type { GetStaticProps, NextPageWithLayout } from "next";
 
 type Props = {
   blogs: (Blog & MicroCMSContentId & MicroCMSDate)[];
 };
 
-const Home: NextPageWithLayout<Props> = ({ blogs }) => {
+export const Top = ({ blogs }: Props) => {
   const menu = [
     {
       title: "Gallary",
@@ -35,7 +31,6 @@ const Home: NextPageWithLayout<Props> = ({ blogs }) => {
       href: "/blog",
     },
   ];
-
   return (
     <>
       <Head />
@@ -66,19 +61,3 @@ const Home: NextPageWithLayout<Props> = ({ blogs }) => {
     </>
   );
 };
-
-Home.getLayout = (page) => <Layout isHeaderOverlay={true}>{page}</Layout>;
-
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const blogs = await client.blogs.$get({ query: { limit: 4 } });
-
-  await makeTagCategoryJson();
-
-  return {
-    props: {
-      blogs: blogs.contents,
-    },
-  };
-};
-
-export default Home;

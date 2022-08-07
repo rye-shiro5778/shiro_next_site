@@ -1,5 +1,5 @@
 import { writeFile } from "fs/promises";
-import { client } from "../cms/utils/cmsClient";
+import { client } from "./cmsClient";
 
 async function makeCategoryJson() {
   try {

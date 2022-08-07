@@ -1,3 +1,4 @@
+import { Rain } from "@/art/p5/FlaksFall/Rain";
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Card } from ".";
 
@@ -19,7 +20,7 @@ const sampleTags = [
 export const Default = Template.bind({});
 Default.args = {
   title: "Sample",
-  img: <img alt={""} src="/flower.png" width={400} height={250} />,
+  img: <Rain cWidth={400} cHeight={250} />,
 };
 
 export const SubTitle = Template.bind({});
@@ -56,7 +57,7 @@ TagFlex.args = {
 export const TagFlex2 = Template.bind({});
 TagFlex2.args = {
   title: "サンプルタイトル",
-  img: <img alt={""} src="/flower.png" width={400} height={250} />,
+  img: <Rain cWidth={400} cHeight={250} />,
   tags: sampleTags,
   tagPosition: "flex",
 };

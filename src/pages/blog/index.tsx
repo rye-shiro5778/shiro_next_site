@@ -1,8 +1,8 @@
-import { client } from "@/cms/utils/cmsClient";
-import { Blog, MicroCMSContentId, MicroCMSDate } from "@/cms/utils/type";
-import { BlogListPage } from "@/components/templates/BlogList";
-import { Head } from "@/components/templates/Head";
+import { BlogListPage } from "@/components/organisms/BlogList";
+import { Head } from "@/components/organisms/Head";
 import BlogLayout from "@/components/templates/Layouts/BlogLayout";
+import { client } from "@/utils/cmsClient";
+import { Blog, MicroCMSContentId, MicroCMSDate } from "@/utils/types/blogs";
 import type { GetStaticProps, NextPageWithLayout } from "next";
 
 type Props = {

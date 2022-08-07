@@ -1,8 +1,8 @@
-import { client } from "@/cms/utils/cmsClient";
-import { Blog, MicroCMSContentId, MicroCMSDate } from "@/cms/utils/type";
-import { BlogListPage } from "@/components/templates/BlogList";
+import { BlogListPage } from "@/components/organisms/BlogList";
 import BlogLayout from "@/components/templates/Layouts/BlogLayout";
+import { client } from "@/utils/cmsClient";
 import { makeRange } from "@/utils/makeRange";
+import { Blog, MicroCMSContentId, MicroCMSDate } from "@/utils/types/blogs";
 import "highlight.js/styles/agate.css";
 import type { GetStaticPaths, GetStaticProps, NextPageWithLayout } from "next";
 

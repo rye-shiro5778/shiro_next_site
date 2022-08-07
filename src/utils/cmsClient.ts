@@ -1,6 +1,6 @@
 import aspida from "@aspida/fetch";
 import fetch from "node-fetch";
-import api from "../api/$api";
+import api from "./api/cms/$api";
 
 const config = {
   headers: {

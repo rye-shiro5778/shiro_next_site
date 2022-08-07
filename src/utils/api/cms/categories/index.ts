@@ -2,7 +2,7 @@ import {
   Category,
   MicroCMSListResponse,
   MicroCMSQueries,
-} from "@/cms/utils/type";
+} from "@/utils/types/blogs";
 
 export type Methods = {
   get: {

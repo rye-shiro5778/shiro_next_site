@@ -30,7 +30,9 @@ export const Card: React.VFC<Props> = ({
   const cardContent = useMemo(() => {
     return (
       <>
-        <div className="w-full">{img}</div>
+        <div className="w-full">
+          {img ?? <div className="bg-gray-900 h-[250px]" />}
+        </div>
         <div className="ml-4 mr-2 my-2">
           <p className={"font-bold text-gray-700 text-base"}>{title}</p>
           <div className="flex justify-between content-center">

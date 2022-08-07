@@ -1,8 +1,8 @@
-import { client } from "@/cms/utils/cmsClient";
-import { Blog as BlogType, MicroCMSDate } from "@/cms/utils/type";
-import { Article } from "@/components/templates/Article";
+import { Article } from "@/components/organisms/Article";
 import BlogLayout from "@/components/templates/Layouts/BlogLayout";
+import { client } from "@/utils/cmsClient";
 import { parseByCheerio } from "@/utils/parseByCheerio";
+import { Blog as BlogType, MicroCMSDate } from "@/utils/types/blogs";
 import "highlight.js/styles/agate.css";
 import type { GetStaticPaths, GetStaticProps, NextPageWithLayout } from "next";
 type Props = { blog: BlogType & MicroCMSDate };

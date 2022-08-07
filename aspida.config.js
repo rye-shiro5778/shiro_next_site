@@ -1,4 +1,4 @@
 module.exports = {
-  input: "src/cms/api",
+  input: "src/utils/api/cms",
   outputEachDir: false,
 };

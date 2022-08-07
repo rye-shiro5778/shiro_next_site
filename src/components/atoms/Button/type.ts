@@ -10,5 +10,6 @@ export type Props = {
   icon?: JSX.Element;
   btnType?: Types;
   isOnlyText?: boolean;
+  isLoading?: boolean;
 } & ButtonProps &
   AProps & { size?: Size };

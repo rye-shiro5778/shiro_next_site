@@ -1,7 +1,7 @@
-import { Blog, MicroCMSContentId, MicroCMSDate } from "@/cms/utils/type";
 import { MicroCmsImage } from "@/components/atoms/Image";
 import { Text } from "@/components/atoms/Typography/Text";
 import { Card } from "@/components/molecules/Card";
+import { Blog, MicroCMSContentId, MicroCMSDate } from "@/utils/types/blogs";
 import dayjs from "dayjs";
 import { BiTime } from "react-icons/bi";
 

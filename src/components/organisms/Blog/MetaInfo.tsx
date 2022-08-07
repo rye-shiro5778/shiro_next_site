@@ -1,7 +1,7 @@
-import { Category, Tag } from "@/cms/utils/type";
 import { Text } from "@/components/atoms/Typography/Text";
 import { Title } from "@/components/atoms/Typography/Title";
 import { TagGroup } from "@/components/molecules/TagGroup";
+import { Category, Tag } from "@/utils/types/blogs";
 import React, { memo } from "react";
 import { BiCategoryAlt, BiTime } from "react-icons/bi";
 type Props = {

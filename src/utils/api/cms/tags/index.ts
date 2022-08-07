@@ -1,4 +1,8 @@
-import { MicroCMSListResponse, MicroCMSQueries, Tag } from "@/cms/utils/type";
+import {
+  MicroCMSListResponse,
+  MicroCMSQueries,
+  Tag,
+} from "@/utils/types/blogs";
 
 export type Methods = {
   get: {
