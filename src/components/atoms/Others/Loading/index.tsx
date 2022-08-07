@@ -1,8 +1,7 @@
-type Props = {};
-export const Loading: React.VFC<Props> = ({}) => {
+export const Loading: React.VFC = () => {
   return (
-    <div className="flex justify-center relative">
-      <div className="animate-spin h-10 w-10 border-2 opacity-90 border-slate-400 rounded-full border-t-transparent"></div>
+    <div className="flex justify-center">
+      <div className="animate-[load_1s_linear_infinite] h-6 w-6 border-[3px] border-gray-200 rounded-full border-t-transparent"></div>
     </div>
   );
 };

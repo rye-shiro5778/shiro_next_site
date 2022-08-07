@@ -16,3 +16,7 @@ a {
 * {
   @apply box-border;
 }
+
+.grecaptcha-badge {
+  visibility: hidden;
+}

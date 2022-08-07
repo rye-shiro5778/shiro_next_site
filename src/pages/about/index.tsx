@@ -1,6 +1,9 @@
+import { Link } from "@/components/atoms/Link";
+import { Text } from "@/components/atoms/Typography/Text";
 import { Title } from "@/components/atoms/Typography/Title";
+import { Head } from "@/components/organisms/Head";
+import { InquiryForm } from "@/components/organisms/Inquiry/InquiryForm";
 import { Externals } from "@/components/organisms/Links/Externals";
-import { Head } from "@/components/templates/Head";
 import Layout from "@/components/templates/Layouts";
 import type { NextPageWithLayout } from "next";
 
@@ -8,9 +11,9 @@ const About: NextPageWithLayout = () => {
   return (
     <>
       <Head />
-      <section className="container mx-auto bg-white dark:bg-gray-800">
-        <div className="px-6 py-8 mx-10">
-          <div className="items-center lg:flex">
+      <div className="container mx-auto bg-white dark:bg-gray-800">
+        <div className="px-6 py-8 mx-4 md:mx-6 lg:mx-10">
+          <section className="items-center lg:flex">
             <div className="lg:w-1/2">
               <Title level={2}>Who am I</Title>
 
@@ -22,16 +25,6 @@ const About: NextPageWithLayout = () => {
                 <br />
                 こちらのサイトは、React(Next.js) + TypeScript + tailwindcss
                 を使用して開発しています。{" "}
-                {/* <a
-                className="font-bold text-blue-600 dark:text-blue-400"
-                href="#"
-              >
-                @BakaTeam
-              </a>
-              , Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum
-              in sed non alias, fugiat, commodi nemo ut fugit corrupti dolorem
-              sequi ex veniam consequuntur id, maiores beatae ipsa omnis
-              aliquam? */}
               </p>
 
               <div className="flex items-center mt-1 mb-6 lg:my-6 -mx-2">
@@ -41,7 +34,7 @@ const About: NextPageWithLayout = () => {
 
             <div className="mt-8 lg:mt-0 lg:w-1/2">
               <div className="flex items-center justify-center lg:justify-end">
-                <div className="max-w-lg mx-10">
+                <div className="max-w-xl  md:mx-6 lg:mx-8 xl:mx-10">
                   <picture>
                     <source
                       srcSet="/profile.webp"
@@ -59,9 +52,39 @@ const About: NextPageWithLayout = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </section>
+          <section className="mt-8">
+            <Title level={2}>Inquiry</Title>
+            <InquiryForm />
+            <div className="mt-4">
+              <Text type="text" className="text-gray-200">
+                ※
+              </Text>
+              <Text type="text" size="sm" className="text-gray-300 mx-2">
+                This site is protected by reCAPTCHA and the Google
+              </Text>
+              <Link
+                href="https://policies.google.com/privacy"
+                className="text-blue-400"
+              >
+                Privacy Policy
+              </Link>
+              <Text className="text-gray-300 mx-2" size="sm">
+                and
+              </Text>
+              <Link
+                href="https://policies.google.com/terms"
+                className="text-blue-400"
+              >
+                Terms of Service
+              </Link>
+              <Text className="text-gray-300 mx-2" size="sm">
+                apply.
+              </Text>
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
     </>
   );
 };
