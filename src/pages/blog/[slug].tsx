@@ -1,4 +1,5 @@
 import { Article } from "@/components/organisms/Article";
+import { Head } from "@/components/organisms/Head";
 import BlogLayout from "@/components/templates/Layouts/BlogLayout";
 import { client } from "@/utils/cmsClient";
 import { parseByCheerio } from "@/utils/parseByCheerio";
@@ -8,7 +9,20 @@ import type { GetStaticPaths, GetStaticProps, NextPageWithLayout } from "next";
 type Props = { blog: BlogType & MicroCMSDate };
 
 const Page: NextPageWithLayout<Props> = ({ blog }) => {
-  return <Article blog={blog} />;
+  const { title, description, slug, eyecatch } = blog;
+  return (
+    <>
+      <Head
+        title={title}
+        description={description}
+        path={`/blog/${slug}`}
+        imgUrl={eyecatch?.url}
+        imgHeight={eyecatch?.height}
+        imgWidth={eyecatch?.width}
+      />
+      <Article blog={blog} />
+    </>
+  );
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -21,16 +35,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Props> = async ({
+  params,
+  previewData,
+}) => {
   const slug = params?.slug;
+  const { draftKey } = previewData as { draftKey?: string; slug?: string };
+
   if (!slug) {
     throw new Error("idがない");
   }
+
   const blog = (
-    await client.blogs.$get({ query: { filters: `slug[equals]${slug}` } })
+    await client.blogs.$get({
+      query: { filters: `slug[equals]${slug}`, draftKey },
+    })
   ).contents[0];
 
-  blog.content = parseByCheerio(blog.content);
+  blog.content = await parseByCheerio(blog.content);
+
   return {
     props: {
       blog,
