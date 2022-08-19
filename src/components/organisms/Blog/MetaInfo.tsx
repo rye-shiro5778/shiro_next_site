@@ -17,7 +17,7 @@ export const MetaInfo: React.VFC<Props> = memo(
         <Title level={2} className="ml-2 font-bold">
           {title}
         </Title>
-        <div className="mt-2 md:mt-4 mb-6 mx-4 flex flex-wrap items-center justify-between">
+        <div className="mt-4 md:mt-6 mb-6 mx-4 flex flex-wrap items-center justify-between">
           <div className="flex mb-2 mr-2">
             {category && (
               <div className="flex items-center mr-6">

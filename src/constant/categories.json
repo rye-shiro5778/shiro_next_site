@@ -14,5 +14,9 @@
     {
         "slug": "other",
         "name": "その他"
+    },
+    {
+        "slug": "aws",
+        "name": "aws"
     }
 ]

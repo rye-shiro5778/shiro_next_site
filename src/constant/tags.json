@@ -22,5 +22,17 @@
     {
         "slug": " vscode",
         "name": "VSCode"
+    },
+    {
+        "slug": "nodejs",
+        "name": "Node.js"
+    },
+    {
+        "slug": "lambda",
+        "name": "Lambda"
+    },
+    {
+        "slug": "docker",
+        "name": "Docker"
     }
 ]

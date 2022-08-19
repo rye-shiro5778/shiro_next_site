@@ -20,6 +20,7 @@ export function useInquiry<Inputs>() {
   } = useForm<Inputs>({
     reValidateMode: "onChange",
   });
+
   const { executeRecaptcha } = useGoogleReCaptcha();
 
   const getRecaptchaToken = async () => {
@@ -55,7 +56,6 @@ export function useInquiry<Inputs>() {
       setTimeout(() => setToast({ ...errorToast, isShow: false }), 3000);
     } finally {
       setIsLoading(false);
-      setTimeout(() => setToast(null), 4000);
     }
   };
 
