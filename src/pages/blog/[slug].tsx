@@ -40,11 +40,12 @@ export const getStaticProps: GetStaticProps<Props> = async ({
   previewData,
 }) => {
   const slug = params?.slug;
-  const { draftKey } = previewData as { draftKey?: string; slug?: string };
-
   if (!slug) {
     throw new Error("idがない");
   }
+  const isDraft = (item: any): item is { draftKey: string } =>
+    !!(item?.draftKey && typeof item.draftKey === "string");
+  const draftKey = isDraft(previewData) ? previewData.draftKey : undefined;
 
   const blog = (
     await client.blogs.$get({
